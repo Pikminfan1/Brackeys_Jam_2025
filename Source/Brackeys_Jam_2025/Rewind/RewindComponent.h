@@ -1,0 +1,343 @@
+// Fill out your copyright notice in the Description page of Project Settings.
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "Components/ActorComponent.h"
+#include "Runtime/Core/Public/Containers/RingBuffer.h"
+
+
+#include "RewindComponent.generated.h"
+
+class UCharacterMovementComponent;
+class URewindVisualizationComponent;
+class SkeletalMeshComponent;
+class ARewindGameMode;
+
+
+//Declare Delegates for communication between actors using the Rewind Component
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnTimeManipulationStarted);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnTimeManipulationCompleted);
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnRewindStarted);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnRewindCompleted);
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnFastForwardStarted);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnFastForwardCompleted);
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnTimeScrubStarted);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnTimeScrubCompleted);
+
+USTRUCT()
+struct FTransformAndVelocitySnapshot
+{
+	GENERATED_BODY();
+
+	// Time since the last snapshot was recorded
+	UPROPERTY(Transient)
+	float TimeSinceLastSnapshot = 0.0f;
+
+	// Transform at time snapshot was recorded
+	UPROPERTY(Transient)
+	FTransform Transform{ FVector::ZeroVector };
+
+	// Linear velocity from the owner's root primitive component at time snapshot was recorded
+	UPROPERTY(Transient)
+	FVector LinearVelocity = FVector::ZeroVector;
+
+	// Angular velocity from the owner's root primitive component at time snapshot was recorded
+	UPROPERTY(Transient)
+	FVector AngularVelocityInRadians = FVector::ZeroVector;
+};
+
+// State snapshots used when rewinding movement
+USTRUCT()
+struct FMovementVelocityAndModeSnapshot
+{
+	GENERATED_BODY();
+
+	// Time since the last snapshot was recorded
+	UPROPERTY(Transient)
+	float TimeSinceLastSnapshot = 0.0f;
+
+	// Movement velocity from the owner's movement component at time snapshot was recorded
+	UPROPERTY(Transient)
+	FVector MovementVelocity = FVector::ZeroVector;
+
+	// Movement mode from the owner's movement component at time snapshot was recorded
+	UPROPERTY(Transient)
+	TEnumAsByte<enum EMovementMode> MovementMode = EMovementMode::MOVE_None;
+};
+
+UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+class BRACKEYS_JAM_2025_API URewindComponent : public UActorComponent
+{
+	GENERATED_BODY()
+
+public:
+	// How often a snapshot should be recorded
+	UPROPERTY(EditDefaultsOnly, Category = "Rewind")
+	float SnapshotFrequencySeconds = 1.0f / 30.0f;
+
+	// Whether actor requires movement component to be rewound
+	UPROPERTY(EditDefaultsOnly, Category = "Rewind")
+	bool bSnapshotMovementVelocityAndMode = false;
+
+	// Whether actor should pause animations during time scrubbing
+	UPROPERTY(EditDefaultsOnly, Category = "Rewind")
+	bool bPauseAnimationDuringTimeScrubbing = false;
+
+
+	// Called when the component begins time manipulation
+	UPROPERTY(BlueprintAssignable, Category = "Rewind")
+	FOnTimeManipulationStarted OnTimeManipulationStarted;
+
+	// Called when the component stops time manipulation
+	UPROPERTY(BlueprintAssignable, Category = "Rewind")
+	FOnTimeManipulationCompleted OnTimeManipulationCompleted;
+
+	// Called when the component begins rewinding
+	UPROPERTY(BlueprintAssignable, Category = "Rewind")
+	FOnRewindStarted OnRewindStarted;
+
+	// Called when the component stops rewinding
+	UPROPERTY(BlueprintAssignable, Category = "Rewind")
+	FOnRewindCompleted OnRewindCompleted;
+
+	// Called when the component begins fast forwarding
+	UPROPERTY(BlueprintAssignable, Category = "Rewind")
+	FOnRewindStarted OnFastForwardStarted;
+
+	// Called when the component stops fast forwarding
+	UPROPERTY(BlueprintAssignable, Category = "Rewind")
+	FOnRewindCompleted OnFastForwardCompleted;
+
+	// Called when the component begins rewinding
+	UPROPERTY(BlueprintAssignable, Category = "Rewind")
+	FOnTimeScrubStarted OnTimeScrubStarted;
+
+	// Called when the component stops rewinding
+	UPROPERTY(BlueprintAssignable, Category = "Rewind")
+	FOnTimeScrubCompleted OnTimeScrubCompleted;
+
+
+protected:
+	//Whether the component is currently rewinding
+	UPROPERTY(Transient, VisibleAnywhere, BlueprintReadOnly, Category = "Rewind")
+	bool bIsRewinding = false;
+
+	// Whether the component is currently fast forwarding
+	UPROPERTY(Transient, VisibleAnywhere, BlueprintReadOnly, Category = "Rewind")
+	bool bIsFastForwarding = false;
+
+	// Whether the component is currently time scrubbing
+	UPROPERTY(Transient, VisibleAnywhere, BlueprintReadOnly, Category = "Rewind")
+	bool bIsTimeScrubbing = false;
+
+	// Whether the component is currently visualizing the timeline
+	UPROPERTY(Transient, VisibleAnywhere, BlueprintReadOnly, Category = "Rewind")
+	bool bIsVisualizingTimeline = false;
+
+	// Whether rewinding is currently enabled
+	UPROPERTY(VisibleAnywhere, Category = "Rewind")
+	bool bIsRewindingEnabled = true;
+
+public:
+
+	//Returns whether the component is currently rewinding
+	UFUNCTION(BlueprintCallable, Category = "Rewind")
+	bool IsRewinding() const { return bIsRewinding; };
+
+	//Returns whether the component is currently fast forwarding
+	UFUNCTION(BlueprintCallable, Category = "Rewind")
+	bool IsFastForwarding() const { return bIsFastForwarding; };
+
+	// Returns whether the component is currently time scrubbing
+	UFUNCTION(BlueprintCallable, Category = "Rewind")
+	bool IsTimeScrubbing() const { return bIsTimeScrubbing; };
+
+	// Returns whether the component is currently doing any form of time manipulation
+	UFUNCTION(BlueprintCallable, Category = "Rewind")
+	bool IsTimeBeingManipulated() const { return bIsRewinding || bIsFastForwarding || bIsTimeScrubbing; };
+
+	// Returns  the component is currently visualizing the timeline
+	UFUNCTION(BlueprintCallable, Category = "Rewind")
+	bool IsVisualizingTimeline() const { return bIsVisualizingTimeline; };
+
+	// Returns whether rewinding is currently enabled
+	UFUNCTION(BlueprintCallable, Category = "Rewind")
+	bool IsRewindingEnabled() const { return bIsRewindingEnabled; }
+
+	// Sets whether rewinding is currently enabled
+	UFUNCTION(BlueprintCallable, Category = "Rewind")
+	void SetIsRewindingEnabled(bool bEnabled);
+
+public:	
+	// Sets default values for this component's properties
+	URewindComponent();
+
+protected:
+	// Called when the game starts
+	virtual void BeginPlay() override;
+
+public:	
+	// Called every frame
+	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+
+	//Time since the last snapshot was added or removed within the ring buffer
+	UPROPERTY(Transient, VisibleAnywhere, Category = "Rewind|Debug")
+	float TimeSinceSnapshotsChanged = 0.0f;
+private:
+	//Buffer storing transform and velocity snapshots used for rewinding
+	TRingBuffer<FTransformAndVelocitySnapshot> TransformAndVelocitySnapshots;
+
+	//Buffer storing movement velocity and mode snapshots used for rewinding
+	TRingBuffer<FMovementVelocityAndModeSnapshot> MovementVelocityAndModeSnapshots;
+
+	//Max snapshots to store, computed in BeginPlay
+	UPROPERTY(Transient, VisibleAnywhere, Category = "Rewind|Debug")
+	uint32 MaxSnapshots = 1;
+		
+
+	UPROPERTY(Transient, VisibleAnywhere, Category = "Rewind|Debug")
+	int32 LatestSnapshotIndex = -1;
+
+	//Root primitive component of the owner, if said component exists
+	UPROPERTY(Transient, VisibleAnywhere, Category = "Rewind|Debug")
+	UPrimitiveComponent* OwnerRootComponent;
+
+	//Movement component of the owner, if said component exists
+	UPROPERTY(Transient, VisibleAnywhere, Category = "Rewind|Debug")
+	UCharacterMovementComponent* OwnerMovementComponent;
+
+	//Skeletal mesh component of the owner, if said component exists
+	UPROPERTY(Transient, VisibleAnywhere, Category = "Rewind|Debug")
+	USkeletalMeshComponent* OwnerSkeletalMesh;
+
+	//Rewind visualization component, if said component exists
+	UPROPERTY(Transient, VisibleAnywhere, Category = "Rewind|Debug")
+	URewindVisualizationComponent* OwnerVisualizationComponent;
+
+	//Bool for whether time maniuplation has pasued physics
+	UPROPERTY(Transient, VisibleAnywhere, Category = "Rewind|Debug")
+	bool bPausedPhysics = false;
+
+	//Bool for whether time maniuplation has pasued animation
+	UPROPERTY(Transient, VisibleAnywhere, Category = "Rewind|Debug")
+	bool bPausedAnimation = false;
+
+	//Bool for whether animation was paused when the current time manipulation operation started
+	UPROPERTY(Transient, VisibleAnywhere, Category = "Rewind|Debug")
+	bool bAnimationsPausedAtStartOfTimeManipulation = false;
+
+	//Bool for whether the last time maniplation was rewind or a fast forward, used by time scrubbing
+	//to determind interpolation direction
+	UPROPERTY(Transient, VisibleAnywhere, Category = "Rewind|Debug")
+	bool bLastTimeManipulationWasRewind = true;
+
+	//Game mode for global rewind state
+	ARewindGameMode* GameMode;
+
+private:
+	//Event Handlers
+
+	//Called when rewinding starts
+	UFUNCTION()
+	void OnGlobalRewindStarted();
+
+	//Called when fast forwarding starts
+	UFUNCTION()
+	void OnGlobalFastForwardStarted();
+
+	//Called wehen time scrubbing starts
+	UFUNCTION()
+	void OnGlobalTimeScrubStarted();
+
+	//called when rewinding completes
+	UFUNCTION()
+	void OnGlobalRewindCompleted();
+
+	//Called when fast forwarding completes
+	UFUNCTION()
+	void OnGlobalFastForwardCompleted();
+
+	//Called when time scrubbing completes
+	UFUNCTION()
+	void OnGlobalTimeScrubCompleted();
+
+	//Called when time scrubbing visualization is enabled
+	UFUNCTION()
+	void OnGlobalTimelineVisualizationEnabled();
+
+	//Called when time scrubbing visualization is disabled
+	UFUNCTION()
+	void OnGlobalTimelineVisualizationDisabled();
+	
+private:
+	//Functions
+
+	//Initializes ring buffers and computes required space
+	void InitializeRingBuffers(float MaxRewindSeconds);
+
+	//Stores a snapshot in the ring buffer
+	void RecordSnapshot(float DeltaTime);
+
+	//Erases all future snapshots after the most recent snapshot
+	void EraseFutureSnapshots();
+
+	//Plays back or forth thrugh time using the snapshots in the ring buffer
+	//And the given rewind bool
+	void PlaySnapshots(float DeltaTime, bool bRewinding);
+
+	void PauseTime(float DeltaTime, bool bRewinding);
+
+	//Helper Function to start a time manipulation operation
+	bool TryStartTimeManipulation(bool& bStateToSet, bool bResetTimeSinceSnapshotsChanged);
+
+	// Helper to stop a time manipulation operation
+	bool TryStopTimeManipulation(bool& bStateToSet, bool bResetTimeSinceSnapshotsChanged, bool bResetMovementVelocity);
+
+
+	//Disables physics
+	void PausePhysics();
+
+	//Recreates physics and movement state
+	//Update this to ignore velocity
+	void UnpausePhysics();
+
+	//Disables animation
+	void PauseAnimation();
+
+	//Resume animation
+	void UnpauseAnimation();
+
+	//Helper function for PlaySnapshots and PauseTime that handles cases where there are an insufficient number of snapshots
+	//For interpolation
+	bool HandleInsufficientSnapshots();
+
+	//Interpolates between the two latest snapshots and applies the result to the owner
+	void InterpolateAndApplySnapshots(bool bRewinding);
+
+	//Blends between two transform and velocity snapshots
+	FTransformAndVelocitySnapshot BlendSnapshots(
+		const FTransformAndVelocitySnapshot& A,
+		const FTransformAndVelocitySnapshot& B,
+		float Alpha);
+
+	//Blends between two movement velocity and movement mode snapshots
+	FMovementVelocityAndModeSnapshot BlendSnapshots(
+		const FMovementVelocityAndModeSnapshot& A,
+		const FMovementVelocityAndModeSnapshot& B,
+		float Alpha);
+
+	//Applies the provided transform and velocity snapshot to the owner
+	void ApplySnapshot(const FTransformAndVelocitySnapshot& Snapshot, bool bApplyPhysics);
+
+	//Applies the provided movement velocity and mode snapshot to the owner
+	void ApplySnapshot(const FMovementVelocityAndModeSnapshot& Snapshot, bool bApplyTimeDilationVelocity);
+
+	//Debug helper to draw snapshots when Rewind.VisualizeSnapshots 1 is set
+	void VisualizeTimeline();
+
+};
