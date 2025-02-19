@@ -7,12 +7,12 @@
 
 ARewindGameMode::ARewindGameMode()
 {
-	//Set default pawn class to our blueprinted character
+	/*//Set default pawn class to our blueprinted character
 	static ConstructorHelpers::FClassFinder<APawn> PlayerPawnBPClass(TEXT("/Game/ThirdPersonCPP/Blueprints/ThirdPersonCharacter"));
 	if (PlayerPawnBPClass.Class != NULL)
 	{
 		DefaultPawnClass = PlayerPawnBPClass.Class;
-	}
+	}*/
 }
 
 void ARewindGameMode::StartGlobalRewind()
