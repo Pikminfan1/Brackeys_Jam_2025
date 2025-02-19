@@ -89,8 +89,8 @@ void ABrackeys_Jam_2025Character::BeginPlay()
 	OriginalTargetCameraArmLength = CameraBoom->TargetArmLength;
 
 	// Bind to time manipulation events
-	RewindComponent->OnTimeManipulationStarted.AddUniqueDynamic(this, &ABrackeys_Jam_2025Character::UpdateCamera);
-	RewindComponent->OnTimeManipulationCompleted.AddUniqueDynamic(this, &ABrackeys_Jam_2025Character::UpdateCamera);
+//	RewindComponent->OnTimeManipulationStarted.AddUniqueDynamic(this, &ABrackeys_Jam_2025Character::UpdateCamera);
+//	RewindComponent->OnTimeManipulationCompleted.AddUniqueDynamic(this, &ABrackeys_Jam_2025Character::UpdateCamera);
 }
 
 //////////////////////////////////////////////////////////////////////////
