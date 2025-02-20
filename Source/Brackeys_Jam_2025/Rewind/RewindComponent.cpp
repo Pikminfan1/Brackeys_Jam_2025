@@ -365,7 +365,7 @@ void URewindComponent::PlaySnapshots(float DeltaTime, bool bRewinding)
 			ApplySnapshot(TransformAndVelocitySnapshots[LatestSnapshotIndex], false /*bApplyPhysics*/);
 			if (bSnapshotMovementVelocityAndMode)
 			{
-				ApplySnapshot(MovementVelocityAndModeSnapshots[LatestSnapshotIndex], true /*bApplyTimeDilationToVelocity*/);
+				ApplySnapshotMode(MovementVelocityAndModeSnapshots[LatestSnapshotIndex], true /*bApplyTimeDilationToVelocity*/);
 			}
 			return;
 		}
@@ -410,7 +410,7 @@ void URewindComponent::PauseTime(float DeltaTime, bool bRewinding)
 			ApplySnapshot(TransformAndVelocitySnapshots[LatestSnapshotIndex], false /*bApplyPhysics*/);
 			if (bSnapshotMovementVelocityAndMode)
 			{
-				ApplySnapshot(MovementVelocityAndModeSnapshots[LatestSnapshotIndex], true /*bApplyTimeDilationToVelocity*/);
+				ApplySnapshotMode(MovementVelocityAndModeSnapshots[LatestSnapshotIndex], true /*bApplyTimeDilationToVelocity*/);
 			}
 			PauseAnimation();
 			return;
@@ -473,7 +473,7 @@ bool URewindComponent::TryStopTimeManipulation(bool& bStateToSet, bool bResetTim
 			ApplySnapshot(TransformAndVelocitySnapshots[LatestSnapshotIndex], true /*bApplyPhysics*/);
 			if (bSnapshotMovementVelocityAndMode)
 			{
-				ApplySnapshot(MovementVelocityAndModeSnapshots[LatestSnapshotIndex], false /*bApplyTimeDilationToVelocity*/);
+				ApplySnapshotMode(MovementVelocityAndModeSnapshots[LatestSnapshotIndex], false /*bApplyTimeDilationToVelocity*/);
 
 				// Players will be surprised if they continue moving after time scrubbing; clear movement velocity
 				if (bResetMovementVelocity && OwnerMovementComponent) { OwnerMovementComponent->Velocity = FVector::ZeroVector; }
@@ -537,7 +537,7 @@ bool URewindComponent::HandleInsufficientSnapshots()
 	if (TransformAndVelocitySnapshots.Num() == 1)
 	{
 		ApplySnapshot(TransformAndVelocitySnapshots[0], false /*bApplyPhysics*/);
-		if (bSnapshotMovementVelocityAndMode) { ApplySnapshot(MovementVelocityAndModeSnapshots[0], true /*bApplyTimeDilationToVelocity*/); }
+		if (bSnapshotMovementVelocityAndMode) { ApplySnapshotMode(MovementVelocityAndModeSnapshots[0], true /*bApplyTimeDilationToVelocity*/); }
 		return true;
 	}
 
@@ -568,8 +568,8 @@ void URewindComponent::InterpolateAndApplySnapshots(bool bRewinding)
 	{
 		const FMovementVelocityAndModeSnapshot& PreviousSnapshot = MovementVelocityAndModeSnapshots[PreviousIndex];
 		const FMovementVelocityAndModeSnapshot& NextSnapshot = MovementVelocityAndModeSnapshots[LatestSnapshotIndex];
-		ApplySnapshot(
-			BlendSnapshots(PreviousSnapshot, NextSnapshot, TimeSinceSnapshotsChanged / NextSnapshot.TimeSinceLastSnapshot),
+		ApplySnapshotMode(
+			BlendSnapshotsMode(PreviousSnapshot, NextSnapshot, TimeSinceSnapshotsChanged / NextSnapshot.TimeSinceLastSnapshot),
 			true /*bApplyTimeDilationToVelocity*/);
 	}
 }
@@ -588,7 +588,7 @@ FTransformAndVelocitySnapshot URewindComponent::BlendSnapshots(
 	return BlendedSnapshot;
 }
 
-FMovementVelocityAndModeSnapshot URewindComponent::BlendSnapshots(
+FMovementVelocityAndModeSnapshot URewindComponent::BlendSnapshotsMode(
 	const FMovementVelocityAndModeSnapshot& A,
 	const FMovementVelocityAndModeSnapshot& B,
 	float Alpha)
@@ -611,7 +611,7 @@ void URewindComponent::ApplySnapshot(const FTransformAndVelocitySnapshot& Snapsh
 	}
 }
 
-void URewindComponent::ApplySnapshot(const FMovementVelocityAndModeSnapshot& Snapshot, bool bApplyTimeDilationToVelocity)
+void URewindComponent::ApplySnapshotMode(const FMovementVelocityAndModeSnapshot& Snapshot, bool bApplyTimeDilationToVelocity)
 {
 	if (OwnerMovementComponent)
 	{

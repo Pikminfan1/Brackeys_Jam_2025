@@ -329,54 +329,68 @@ private:
 
 	//Plays back or forth thrugh time using the snapshots in the ring buffer
 	//And the given rewind bool
+	UFUNCTION(BlueprintCallable)
 	void PlaySnapshots(float DeltaTime, bool bRewinding);
 
+	UFUNCTION(BlueprintCallable)
 	void PauseTime(float DeltaTime, bool bRewinding);
 
 	//Helper Function to start a time manipulation operation
+	UFUNCTION(BlueprintCallable)
 	bool TryStartTimeManipulation(bool& bStateToSet, bool bResetTimeSinceSnapshotsChanged);
 
 	// Helper to stop a time manipulation operation
+	UFUNCTION(BlueprintCallable)
 	bool TryStopTimeManipulation(bool& bStateToSet, bool bResetTimeSinceSnapshotsChanged, bool bResetMovementVelocity);
 
 
 	//Disables physics
+	UFUNCTION(BlueprintCallable)
 	void PausePhysics();
 
 	//Recreates physics and movement state
 	//Update this to ignore velocity
+	UFUNCTION(BlueprintCallable)
 	void UnpausePhysics();
 
 	//Disables animation
+	UFUNCTION(BlueprintCallable)
 	void PauseAnimation();
 
 	//Resume animation
+	UFUNCTION(BlueprintCallable)
 	void UnpauseAnimation();
 
 	//Helper function for PlaySnapshots and PauseTime that handles cases where there are an insufficient number of snapshots
 	//For interpolation
+	UFUNCTION(BlueprintCallable)
 	bool HandleInsufficientSnapshots();
 
 	//Interpolates between the two latest snapshots and applies the result to the owner
+	UFUNCTION(BlueprintCallable)
 	void InterpolateAndApplySnapshots(bool bRewinding);
 
 	//Blends between two transform and velocity snapshots
+	UFUNCTION(BlueprintCallable)
 	FTransformAndVelocitySnapshot BlendSnapshots(
 		const FTransformAndVelocitySnapshot& A,
 		const FTransformAndVelocitySnapshot& B,
 		float Alpha);
 
 	//Blends between two movement velocity and movement mode snapshots
-	FMovementVelocityAndModeSnapshot BlendSnapshots(
+	UFUNCTION(BlueprintCallable)
+	FMovementVelocityAndModeSnapshot BlendSnapshotsMode(
 		const FMovementVelocityAndModeSnapshot& A,
 		const FMovementVelocityAndModeSnapshot& B,
 		float Alpha);
 
 	//Applies the provided transform and velocity snapshot to the owner
+	UFUNCTION(BlueprintCallable)
 	void ApplySnapshot(const FTransformAndVelocitySnapshot& Snapshot, bool bApplyPhysics);
 
 	//Applies the provided movement velocity and mode snapshot to the owner
-	void ApplySnapshot(const FMovementVelocityAndModeSnapshot& Snapshot, bool bApplyTimeDilationVelocity);
+	UFUNCTION(BlueprintCallable)
+	void ApplySnapshotMode(const FMovementVelocityAndModeSnapshot& Snapshot, bool bApplyTimeDilationVelocity);
 
 	//Debug helper to draw snapshots when Rewind.VisualizeSnapshots 1 is set
 	void VisualizeTimeline();
