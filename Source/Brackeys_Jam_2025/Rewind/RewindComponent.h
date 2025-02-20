@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "Runtime/Core/Public/Containers/RingBuffer.h"
-
+//#include "RewindSnapshot.h"
 
 #include "RewindComponent.generated.h"
 
@@ -13,60 +13,66 @@ class UCharacterMovementComponent;
 class URewindVisualizationComponent;
 class SkeletalMeshComponent;
 class ARewindGameMode;
-
+struct FTransformAndVelocitySnapshot;
 
 //Declare Delegates for communication between actors using the Rewind Component
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnTimeManipulationStarted);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnTimeManipulationCompleted);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnTimeManipulationCompleted, float, TotalRewindTime);
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnRewindStarted);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnRewindCompleted);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnRewindCompleted, float, TotalRewindTime);
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnFastForwardStarted);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnFastForwardCompleted);
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnTimeScrubStarted);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnTimeScrubCompleted);
+/*
 
-USTRUCT()
+
+*/
+USTRUCT(BlueprintType)
 struct FTransformAndVelocitySnapshot
 {
 	GENERATED_BODY();
 
 	// Time since the last snapshot was recorded
-	UPROPERTY(Transient)
+	UPROPERTY(Transient, BlueprintReadWrite)
 	float TimeSinceLastSnapshot = 0.0f;
 
 	// Transform at time snapshot was recorded
-	UPROPERTY(Transient)
+	UPROPERTY(Transient, BlueprintReadWrite)
 	FTransform Transform{ FVector::ZeroVector };
 
 	// Linear velocity from the owner's root primitive component at time snapshot was recorded
-	UPROPERTY(Transient)
+	UPROPERTY(Transient, BlueprintReadWrite)
 	FVector LinearVelocity = FVector::ZeroVector;
 
 	// Angular velocity from the owner's root primitive component at time snapshot was recorded
-	UPROPERTY(Transient)
+	UPROPERTY(Transient, BlueprintReadWrite)
 	FVector AngularVelocityInRadians = FVector::ZeroVector;
 };
 
+
+
+
 // State snapshots used when rewinding movement
-USTRUCT()
+USTRUCT(BlueprintType)
 struct FMovementVelocityAndModeSnapshot
 {
 	GENERATED_BODY();
 
 	// Time since the last snapshot was recorded
-	UPROPERTY(Transient)
+	UPROPERTY(Transient, BlueprintReadWrite)
 	float TimeSinceLastSnapshot = 0.0f;
 
 	// Movement velocity from the owner's movement component at time snapshot was recorded
-	UPROPERTY(Transient)
+	UPROPERTY(Transient, BlueprintReadWrite)
 	FVector MovementVelocity = FVector::ZeroVector;
 
 	// Movement mode from the owner's movement component at time snapshot was recorded
-	UPROPERTY(Transient)
+	UPROPERTY(Transient, BlueprintReadWrite)
 	TEnumAsByte<enum EMovementMode> MovementMode = EMovementMode::MOVE_None;
 };
 
@@ -76,6 +82,9 @@ class BRACKEYS_JAM_2025_API URewindComponent : public UActorComponent
 	GENERATED_BODY()
 
 public:
+
+	UPROPERTY(EditAnywhere, Category = "Rewind")
+	float TotalRewindTime;
 	// How often a snapshot should be recorded
 	UPROPERTY(EditDefaultsOnly, Category = "Rewind")
 	float SnapshotFrequencySeconds = 1.0f / 30.0f;
@@ -120,6 +129,13 @@ public:
 	// Called when the component stops rewinding
 	UPROPERTY(BlueprintAssignable, Category = "Rewind")
 	FOnTimeScrubCompleted OnTimeScrubCompleted;
+	/*
+	UPROPERTY(BlueprintAssignable, Category = "Rewind")
+	FOnSnapshotRecorded OnSnapshotRecorded;
+
+	UPROPERTY(BlueprintAssignable, Category = "Rewind")
+	FOnSnapshotApplied OnSnapshotApplied;*/
+
 
 
 protected:
@@ -145,6 +161,8 @@ protected:
 
 public:
 
+	UFUNCTION(BlueprintCallable, Category = "Rewind")
+	void ResetTotalRewindTime() { TotalRewindTime = 0.0f; }
 	//Returns whether the component is currently rewinding
 	UFUNCTION(BlueprintCallable, Category = "Rewind")
 	bool IsRewinding() const { return bIsRewinding; };
@@ -185,11 +203,28 @@ public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
+	UFUNCTION(BlueprintCallable)
+	TArray<FTransformAndVelocitySnapshot> GetTransformAndVelocitySnapshots() const;
 	//Time since the last snapshot was added or removed within the ring buffer
 	UPROPERTY(Transient, VisibleAnywhere, Category = "Rewind|Debug")
 	float TimeSinceSnapshotsChanged = 0.0f;
+
+	UPROPERTY()
+	TArray<FTransformAndVelocitySnapshot> TotalRace;
+
+	UPROPERTY()
+	TArray<FMovementVelocityAndModeSnapshot> TotalRaceAndMode;
+
+	UFUNCTION(BlueprintCallable)
+	TArray<FTransformAndVelocitySnapshot> GetTotalRace() const { return TotalRace; }
+
+
+	UFUNCTION(BlueprintCallable)
+	TArray<FMovementVelocityAndModeSnapshot> GetTotalRaceAndMode() const { return TotalRaceAndMode; }
+
 private:
 	//Buffer storing transform and velocity snapshots used for rewinding
+
 	TRingBuffer<FTransformAndVelocitySnapshot> TransformAndVelocitySnapshots;
 
 	//Buffer storing movement velocity and mode snapshots used for rewinding
@@ -242,6 +277,12 @@ private:
 private:
 	//Event Handlers
 
+
+	UFUNCTION()
+	void HandleOnSnapshotRecorded();
+
+	UFUNCTION()
+	void HandleOnSnapshotApplied();
 	//Called when rewinding starts
 	UFUNCTION()
 	void OnGlobalRewindStarted();

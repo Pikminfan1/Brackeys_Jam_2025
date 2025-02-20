@@ -26,6 +26,8 @@ URewindComponent::URewindComponent()
 
 	// Tick after movement is completed
 	PrimaryComponentTick.TickGroup = TG_PostPhysics;
+
+	TotalRewindTime = 0.0f;
 }
 
 
@@ -65,6 +67,8 @@ void URewindComponent::BeginPlay()
 	GameMode->OnGlobalTimeScrubStarted.AddUniqueDynamic(this, &URewindComponent::OnGlobalTimeScrubStarted);
 	GameMode->OnGlobalTimeScrubCompleted.AddUniqueDynamic(this, &URewindComponent::OnGlobalTimeScrubCompleted);
 
+	//OnSnapshotRecorded.AddUniqueDynamic(this, &URewindComponent::OnSnapshotRecorded);
+
 	// Bind to timeline visualization events on the game mode
 	GameMode->OnGlobalTimelineVisualizationEnabled.AddUniqueDynamic(this, &URewindComponent::OnGlobalTimelineVisualizationEnabled);
 	GameMode->OnGlobalTimelineVisualizationDisabled.AddUniqueDynamic(this, &URewindComponent::OnGlobalTimelineVisualizationDisabled);
@@ -89,6 +93,17 @@ void URewindComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActo
 	else { RecordSnapshot(DeltaTime); }
 
 	// ...
+}
+
+TArray<FTransformAndVelocitySnapshot> URewindComponent::GetTransformAndVelocitySnapshots() const
+{
+	TArray<FTransformAndVelocitySnapshot> Snapshots;
+	Snapshots.Reserve(TransformAndVelocitySnapshots.Num());
+	for (const FTransformAndVelocitySnapshot& Snapshot : TransformAndVelocitySnapshots)
+	{
+		Snapshots.Add(Snapshot);
+	}
+	return Snapshots;
 }
 
 void URewindComponent::SetIsRewindingEnabled(bool bEnabled)
@@ -118,6 +133,14 @@ void URewindComponent::SetIsRewindingEnabled(bool bEnabled)
 		// Start time scrubbing if a global time scrub is in progress
 		if (!bIsTimeScrubbing && GameMode->IsGlobalTimeScrubbing()) { OnGlobalTimeScrubStarted(); }
 	}
+}
+void URewindComponent::HandleOnSnapshotRecorded()
+{
+	
+}
+void URewindComponent::HandleOnSnapshotApplied()
+{
+	
 }
 void URewindComponent::OnGlobalRewindStarted()
 {
@@ -158,6 +181,7 @@ void URewindComponent::OnGlobalTimeScrubStarted()
 
 void URewindComponent::OnGlobalRewindCompleted()
 {
+	
 	// Attempt to stop rewinding
 	if (TryStopTimeManipulation(bIsRewinding, !bIsTimeScrubbing, false /*bResetMovementVelocity*/))
 	{
@@ -165,9 +189,11 @@ void URewindComponent::OnGlobalRewindCompleted()
 		bLastTimeManipulationWasRewind = true;
 
 		// Notify event subscribers that rewind (and possibly time manipulation) completed
-		OnRewindCompleted.Broadcast();
-		if (!IsTimeBeingManipulated()) { OnTimeManipulationCompleted.Broadcast(); }
+		OnRewindCompleted.Broadcast(TotalRewindTime);
+		if (!IsTimeBeingManipulated()) { OnTimeManipulationCompleted.Broadcast(TotalRewindTime); }
+		//TotalRewindTime = 0.0f;
 	}
+
 }
 
 void URewindComponent::OnGlobalFastForwardCompleted()
@@ -179,8 +205,8 @@ void URewindComponent::OnGlobalFastForwardCompleted()
 		bLastTimeManipulationWasRewind = false;
 
 		// Notify event subscribers that fast forward (and possibly time manipulation) completed
-		OnFastForwardCompleted.Broadcast();
-		if (!IsTimeBeingManipulated()) { OnTimeManipulationCompleted.Broadcast(); }
+		OnFastForwardCompleted.Broadcast(TotalRewindTime);
+		if (!IsTimeBeingManipulated()) { OnTimeManipulationCompleted.Broadcast(TotalRewindTime); }
 	}
 }
 
@@ -190,8 +216,8 @@ void URewindComponent::OnGlobalTimeScrubCompleted()
 	if (TryStopTimeManipulation(bIsTimeScrubbing, false /*bResetTimeSinceSnapshotsChanged*/, true /*bResetMovementVelocity*/))
 	{
 		// Notify event subscribers that time scrubbing (and possibly time manipulation) completed
-		OnFastForwardCompleted.Broadcast();
-		if (!IsTimeBeingManipulated()) { OnTimeManipulationCompleted.Broadcast(); }
+		OnFastForwardCompleted.Broadcast(TotalRewindTime);
+		if (!IsTimeBeingManipulated()) { OnTimeManipulationCompleted.Broadcast(TotalRewindTime); }
 	}
 }
 
@@ -269,7 +295,8 @@ void URewindComponent::RecordSnapshot(float DeltaTime)
 	FVector AngularVelocityInRadians = OwnerRootComponent ? OwnerRootComponent->GetPhysicsAngularVelocityInRadians() : FVector::Zero();
 	LatestSnapshotIndex =
 		TransformAndVelocitySnapshots.Emplace(TimeSinceSnapshotsChanged, Transform, LinearVelocity, AngularVelocityInRadians);
-
+	//Add to total race array
+	TotalRace.Add(TransformAndVelocitySnapshots[LatestSnapshotIndex]);
 	if (bSnapshotMovementVelocityAndMode && OwnerMovementComponent)
 	{
 		// If the buffer is full, drop the oldest snapshot
@@ -281,6 +308,7 @@ void URewindComponent::RecordSnapshot(float DeltaTime)
 		int32 LatestMovementSnapshotIndex =
 			MovementVelocityAndModeSnapshots.Emplace(TimeSinceSnapshotsChanged, MovementVelocity, MovementMode);
 		check(LatestSnapshotIndex == LatestMovementSnapshotIndex);
+		TotalRaceAndMode.Add(MovementVelocityAndModeSnapshots[LatestMovementSnapshotIndex]);
 	}
 
 	TimeSinceSnapshotsChanged = 0.0f;
@@ -292,6 +320,7 @@ void URewindComponent::EraseFutureSnapshots()
 	while (LatestSnapshotIndex < TransformAndVelocitySnapshots.Num() - 1)
 	{
 		TransformAndVelocitySnapshots.Pop();
+		TotalRace.Pop();
 	}
 
 	if (!bSnapshotMovementVelocityAndMode)
@@ -300,6 +329,7 @@ void URewindComponent::EraseFutureSnapshots()
 		while (LatestSnapshotIndex < MovementVelocityAndModeSnapshots.Num() - 1)
 		{
 			MovementVelocityAndModeSnapshots.Pop();
+			TotalRaceAndMode.Pop();
 		}
 	}
 }
@@ -320,6 +350,7 @@ void URewindComponent::PlaySnapshots(float DeltaTime, bool bRewinding)
 	float LatestSnapshotTime = TransformAndVelocitySnapshots[LatestSnapshotIndex].TimeSinceLastSnapshot;
 	if (bRewinding)
 	{
+		TotalRewindTime += DeltaTime;
 		// Drop any snapshots that are too old to be relevant
 		while (LatestSnapshotIndex > 0 && TimeSinceSnapshotsChanged > LatestSnapshotTime)
 		{
@@ -343,6 +374,7 @@ void URewindComponent::PlaySnapshots(float DeltaTime, bool bRewinding)
 	}
 	else
 	{
+		TotalRewindTime -= DeltaTime;
 		// Drop any snapshots that are too old to be relevant
 		while (LatestSnapshotIndex < TransformAndVelocitySnapshots.Num() - 1 && TimeSinceSnapshotsChanged > LatestSnapshotTime)
 		{
@@ -360,7 +392,7 @@ void URewindComponent::PlaySnapshots(float DeltaTime, bool bRewinding)
 		TimeSinceSnapshotsChanged = FMath::Min(TimeSinceSnapshotsChanged, LatestSnapshotTime);
 		if (bAnimationsPausedAtStartOfTimeManipulation) { PauseAnimation(); }
 	}
-
+	TotalRewindTime = FMath::Clamp(TotalRewindTime, 0.0f, GameMode->MaxRewindInSeconds);
 	InterpolateAndApplySnapshots(bRewinding);
 }
 
@@ -451,7 +483,7 @@ bool URewindComponent::TryStopTimeManipulation(bool& bStateToSet, bool bResetTim
 		// Delete any future snapshots on the timeline that should be overwritten by new snapshots
 		EraseFutureSnapshots();
 	}
-
+	//TotalRewindTime = 0.0f;
 	return true;
 }
 
