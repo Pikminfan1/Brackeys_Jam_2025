@@ -10,6 +10,7 @@
 #include "Engine/World.h"
 #include "GameFramework/Actor.h"
 #include "GameFramework/Character.h"
+#include "../KartPawnBase.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/MovementComponent.h"
 #include "GameFramework/PawnMovementComponent.h"
@@ -77,6 +78,11 @@ void URewindComponent::BeginPlay()
 	// Preallocate the space required in the ring buffers
 	InitializeRingBuffers(GameMode->MaxRewindInSeconds);
 	
+	KartPawn = Cast<AKartPawnBase>(GetOwner());
+	if (KartPawn)
+	{
+		bIsKartPawn = true;
+	}
 }
 
 
@@ -280,7 +286,10 @@ void URewindComponent::InitializeRingBuffers(float MaxRewindSeconds)
 void URewindComponent::RecordSnapshot(float DeltaTime)
 {
 	TRACE_CPUPROFILER_EVENT_SCOPE(URewindComponent::RecordSnapshot);
-
+	bool isActorDead = false;
+	if (bIsKartPawn) {
+		isActorDead = KartPawn->bIsDead;
+	}
 	TimeSinceSnapshotsChanged += DeltaTime;
 
 	// Early out if last snapshot was taken within the desired snapshot cadence
@@ -294,7 +303,7 @@ void URewindComponent::RecordSnapshot(float DeltaTime)
 	FVector LinearVelocity = OwnerRootComponent ? OwnerRootComponent->GetPhysicsLinearVelocity() : FVector::Zero();
 	FVector AngularVelocityInRadians = OwnerRootComponent ? OwnerRootComponent->GetPhysicsAngularVelocityInRadians() : FVector::Zero();
 	LatestSnapshotIndex =
-		TransformAndVelocitySnapshots.Emplace(TimeSinceSnapshotsChanged, Transform, LinearVelocity, AngularVelocityInRadians);
+		TransformAndVelocitySnapshots.Emplace(TimeSinceSnapshotsChanged, Transform, LinearVelocity, AngularVelocityInRadians, isActorDead);
 	//Add to total race array
 	TotalRace.Add(TransformAndVelocitySnapshots[LatestSnapshotIndex]);
 	if (bSnapshotMovementVelocityAndMode && OwnerMovementComponent)
@@ -306,7 +315,7 @@ void URewindComponent::RecordSnapshot(float DeltaTime)
 		FVector MovementVelocity = OwnerMovementComponent->Velocity;
 		TEnumAsByte<EMovementMode> MovementMode = OwnerMovementComponent->MovementMode;
 		int32 LatestMovementSnapshotIndex =
-			MovementVelocityAndModeSnapshots.Emplace(TimeSinceSnapshotsChanged, MovementVelocity, MovementMode);
+			MovementVelocityAndModeSnapshots.Emplace(TimeSinceSnapshotsChanged, MovementVelocity, MovementMode, isActorDead);
 		check(LatestSnapshotIndex == LatestMovementSnapshotIndex);
 		TotalRaceAndMode.Add(MovementVelocityAndModeSnapshots[LatestMovementSnapshotIndex]);
 	}
@@ -346,6 +355,10 @@ void URewindComponent::PlaySnapshots(float DeltaTime, bool bRewinding)
 	DeltaTime *= GameMode->GetGlobalRewindSpeed();
 	TimeSinceSnapshotsChanged += DeltaTime;
 
+	if (bIsKartPawn) {
+		KartPawn->SetIsDead(TransformAndVelocitySnapshots[LatestSnapshotIndex].bHasDied);
+	}
+
 	bool bReachedEndOfTrack = false;
 	float LatestSnapshotTime = TransformAndVelocitySnapshots[LatestSnapshotIndex].TimeSinceLastSnapshot;
 	if (bRewinding)
@@ -360,6 +373,7 @@ void URewindComponent::PlaySnapshots(float DeltaTime, bool bRewinding)
 		}
 
 		// If we don't have any snapshots in the future, we can't interpolate, so just snap to the latest snapshot
+		//ADD APPLY DEATH TO ACTOR IF WE ARE A KART
 		if (LatestSnapshotIndex == TransformAndVelocitySnapshots.Num() - 1)
 		{
 			ApplySnapshot(TransformAndVelocitySnapshots[LatestSnapshotIndex], false /*bApplyPhysics*/);
@@ -455,7 +469,9 @@ bool URewindComponent::TryStopTimeManipulation(bool& bStateToSet, bool bResetTim
 
 	// Turn off requested time manipulation (i.e. bIsRewinding, bIsFastForwarding, bIsTimeScrubbing)
 	bStateToSet = false;
-
+	if (bIsKartPawn) {
+		KartPawn->SetIsDead(TransformAndVelocitySnapshots[LatestSnapshotIndex].bHasDied);
+	}
 	// If transitioning from rewind to regular play, restore state
 	if (!bIsTimeScrubbing)
 	{
@@ -470,6 +486,7 @@ bool URewindComponent::TryStopTimeManipulation(bool& bStateToSet, bool bResetTim
 		// Snap to the last snapshot before exiting rewind
 		if (LatestSnapshotIndex >= 0)
 		{
+
 			ApplySnapshot(TransformAndVelocitySnapshots[LatestSnapshotIndex], true /*bApplyPhysics*/);
 			if (bSnapshotMovementVelocityAndMode)
 			{
@@ -608,6 +625,10 @@ void URewindComponent::ApplySnapshot(const FTransformAndVelocitySnapshot& Snapsh
 	{
 		OwnerRootComponent->SetPhysicsLinearVelocity(Snapshot.LinearVelocity);
 		OwnerRootComponent->SetPhysicsAngularVelocityInRadians(Snapshot.AngularVelocityInRadians);
+		if (bIsKartPawn)
+		{
+			KartPawn->SetIsDead(Snapshot.bHasDied);
+		}
 	}
 }
 
@@ -618,6 +639,10 @@ void URewindComponent::ApplySnapshotMode(const FMovementVelocityAndModeSnapshot&
 		OwnerMovementComponent->Velocity =
 			bApplyTimeDilationToVelocity ? Snapshot.MovementVelocity * GameMode->GetGlobalRewindSpeed() : Snapshot.MovementVelocity;
 		OwnerMovementComponent->SetMovementMode(Snapshot.MovementMode);
+		if (bIsKartPawn)
+		{
+			KartPawn->SetIsDead(Snapshot.bHasDied);
+		}
 	}
 }
 

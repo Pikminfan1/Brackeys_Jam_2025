@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+//#include "../KartPawnBase.h"
 #include "Runtime/Core/Public/Containers/RingBuffer.h"
 //#include "RewindSnapshot.h"
 
@@ -13,6 +14,7 @@ class UCharacterMovementComponent;
 class URewindVisualizationComponent;
 class SkeletalMeshComponent;
 class ARewindGameMode;
+class AKartPawnBase;
 struct FTransformAndVelocitySnapshot;
 
 //Declare Delegates for communication between actors using the Rewind Component
@@ -52,6 +54,9 @@ struct FTransformAndVelocitySnapshot
 	// Angular velocity from the owner's root primitive component at time snapshot was recorded
 	UPROPERTY(Transient, BlueprintReadWrite)
 	FVector AngularVelocityInRadians = FVector::ZeroVector;
+	
+	UPROPERTY(Transient, BlueprintReadWrite)
+	bool bHasDied = false;
 };
 
 
@@ -62,6 +67,7 @@ USTRUCT(BlueprintType)
 struct FMovementVelocityAndModeSnapshot
 {
 	GENERATED_BODY();
+
 
 	// Time since the last snapshot was recorded
 	UPROPERTY(Transient, BlueprintReadWrite)
@@ -74,6 +80,9 @@ struct FMovementVelocityAndModeSnapshot
 	// Movement mode from the owner's movement component at time snapshot was recorded
 	UPROPERTY(Transient, BlueprintReadWrite)
 	TEnumAsByte<enum EMovementMode> MovementMode = EMovementMode::MOVE_None;
+	
+	UPROPERTY(Transient, BlueprintReadWrite)
+	bool bHasDied = false;
 };
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
@@ -82,6 +91,9 @@ class BRACKEYS_JAM_2025_API URewindComponent : public UActorComponent
 	GENERATED_BODY()
 
 public:
+
+	UPROPERTY(Transient, BlueprintReadWrite)
+	bool bIsKartPawn = false;
 
 	UPROPERTY(EditAnywhere, Category = "Rewind")
 	float TotalRewindTime;
@@ -161,6 +173,9 @@ protected:
 
 public:
 
+	//UPROPERTY(Transient, BlueprintReadWrite)
+	//bool IsDead = false;
+	TObjectPtr<AKartPawnBase> KartPawn;
 	UFUNCTION(BlueprintCallable, Category = "Rewind")
 	void ResetTotalRewindTime() { TotalRewindTime = 0.0f; }
 	//Returns whether the component is currently rewinding
