@@ -568,9 +568,11 @@ void URewindComponent::InterpolateAndApplySnapshots(bool bRewinding)
 	// Interpolate between the two relevant snapshots
 	constexpr int MinSnapshotsForInterpolation = 2;
 	check(TransformAndVelocitySnapshots.Num() >= MinSnapshotsForInterpolation);
-	check(bRewinding && LatestSnapshotIndex < TransformAndVelocitySnapshots.Num() - 1 || !bRewinding && LatestSnapshotIndex > 0);
+	if (TransformAndVelocitySnapshots.Num() < MinSnapshotsForInterpolation) { return; }
+	//check(bRewinding && LatestSnapshotIndex < TransformAndVelocitySnapshots.Num() - 1);
+	//check(!bRewinding && LatestSnapshotIndex > 0);
 	int PreviousIndex = bRewinding ? LatestSnapshotIndex + 1 : LatestSnapshotIndex - 1;
-
+	if (PreviousIndex < 0 || PreviousIndex >= TransformAndVelocitySnapshots.Num()) { return; }
 	// Blend and apply transform and velocity snapshots (scoped to avoid variable shadowing)
 	{
 		const FTransformAndVelocitySnapshot& PreviousSnapshot = TransformAndVelocitySnapshots[PreviousIndex];
