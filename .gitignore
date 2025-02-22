@@ -59,6 +59,8 @@ Wwise/*.wsettings
 !Plugins/WwiseNiagara/**
 !Plugins/WwiseSoundEngine/
 !Plugins/WwiseSoundEngine/**
+!Plugins/WwiseSoundEngine/ThirdParty/
+!Plugins/WwiseSoundEngine/ThirdParty/**
 
 # Precompiled Assets
 SourceArt/**/*.png
