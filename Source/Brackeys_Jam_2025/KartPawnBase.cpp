@@ -18,8 +18,13 @@ void AKartPawnBase::BeginPlay()
 	Super::BeginPlay();
 	
 }
-
+/*
 void AKartPawnBase::SetIsDead(bool bNewIsDead)
+{
+
+}*/
+
+void AKartPawnBase::SetIsDead_Implementation(bool bNewIsDead)
 {
 	if (bIsDead != bNewIsDead)
 	{
