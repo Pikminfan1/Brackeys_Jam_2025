@@ -164,4 +164,7 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Rewind")
 	float GetGlobalRewindSpeed() const { return GlobalRewindSpeed; }
 
+	UFUNCTION(BlueprintCallable, Category = "Rewind")
+	float GetMaxRewindInSeconds() const { return MaxRewindInSeconds; }
+
 };
