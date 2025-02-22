@@ -6,6 +6,13 @@
 				<Folder Name="Car SFX" ID="{9CFB3B96-8D43-4787-9C65-B0F45D42CA30}" ShortID="315312501">
 					<ChildrenList>
 						<Sound Name="Accelerate" ID="{8BA3C838-A0DA-437C-9F83-C124E1CE59DF}" ShortID="712014154">
+							<PropertyList>
+								<Property Name="IsStreamingEnabled" Type="bool">
+									<ValueList>
+										<Value>True</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{32CDA104-C895-4D4A-8E5F-57F0DCAB41D7}"/>
@@ -28,6 +35,9 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="Boost" ID="{50BFA20A-197B-49F7-BB37-6C6A53E67585}" ShortID="702068289">
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{32CDA104-C895-4D4A-8E5F-57F0DCAB41D7}"/>
@@ -50,6 +60,9 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="Drift" ID="{79F6C745-BD75-48CA-81BF-24CEFE6A5B25}" ShortID="823300785">
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{32CDA104-C895-4D4A-8E5F-57F0DCAB41D7}"/>
@@ -139,6 +152,28 @@
 							</ChildrenList>
 							<ActiveSourceList>
 								<ActiveSource Name="RewindTime" ID="{6E1EBFD8-50AD-4DCB-8DFD-A656A0120D99}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="LapIncrement" ID="{0439C42D-7BC4-417B-B82D-54FFB6D8A59A}" ShortID="147693485">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{32CDA104-C895-4D4A-8E5F-57F0DCAB41D7}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D98E642A-2986-47B6-961B-EF2E1F9779F5}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Lap increment" ID="{BBCFC737-B969-4771-B6A1-BFFA9632A5EE}">
+									<Language>SFX</Language>
+									<AudioFile>Lap increment.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="179898083"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Lap increment" ID="{BBCFC737-B969-4771-B6A1-BFFA9632A5EE}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>

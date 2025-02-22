@@ -7,6 +7,7 @@
 					<ObjectInclusionList>
 						<ObjectRef Name="Death" ID="{7ADFB06F-4327-413E-B84F-9775438B2701}" WorkUnitID="{E5B03569-EB92-4084-8D20-227305AB673A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Boost" ID="{5CC91B41-8254-4143-8547-005A29081674}" WorkUnitID="{E5B03569-EB92-4084-8D20-227305AB673A}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="MainMenu" ID="{5E79CB61-F1CD-4184-9C38-DC3003DA15BC}" WorkUnitID="{E5B03569-EB92-4084-8D20-227305AB673A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Spikes" ID="{2262716D-F272-42D1-A40B-E4467A72ECAE}" WorkUnitID="{E5B03569-EB92-4084-8D20-227305AB673A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="ThreeTwoOneGO" ID="{2DA3879C-8B26-4720-8EF1-6B8D97A3ADC9}" WorkUnitID="{E5B03569-EB92-4084-8D20-227305AB673A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Drift" ID="{F767A05B-B110-488E-8F34-70D5A672A28E}" WorkUnitID="{E5B03569-EB92-4084-8D20-227305AB673A}" Origin="Manual" Filter="7"/>
@@ -15,6 +16,7 @@
 						<ObjectRef Name="Flames" ID="{66D94607-E36E-4BC2-9435-7AE7084F5954}" WorkUnitID="{E5B03569-EB92-4084-8D20-227305AB673A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="RewindTime" ID="{2733A86F-B812-4D13-8208-716E3E32D83F}" WorkUnitID="{E5B03569-EB92-4084-8D20-227305AB673A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="TeslaCoil" ID="{9D32A4C3-2C0B-4D90-9F77-7B383204891C}" WorkUnitID="{E5B03569-EB92-4084-8D20-227305AB673A}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="LapIncrement" ID="{EF0F5561-D54F-4DC2-B8B6-594AAD15ABDC}" WorkUnitID="{E5B03569-EB92-4084-8D20-227305AB673A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Bomb" ID="{1B3DEFBA-5410-4F35-825A-3A81AF7746E9}" WorkUnitID="{E5B03569-EB92-4084-8D20-227305AB673A}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
