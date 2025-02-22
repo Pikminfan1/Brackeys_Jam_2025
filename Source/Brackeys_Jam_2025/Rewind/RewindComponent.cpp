@@ -288,7 +288,11 @@ void URewindComponent::RecordSnapshot(float DeltaTime)
 	TRACE_CPUPROFILER_EVENT_SCOPE(URewindComponent::RecordSnapshot);
 	bool isActorDead = false;
 	if (bIsKartPawn) {
-		isActorDead = KartPawn->bIsDead;
+		//isActorDead = KartPawn->bIsDead;
+	}
+	if (GetOwner() && GetOwner()->Implements<UKillable>())
+	{
+		isActorDead = IKillable::Execute_IsDead(GetOwner());
 	}
 	TimeSinceSnapshotsChanged += DeltaTime;
 
@@ -356,7 +360,11 @@ void URewindComponent::PlaySnapshots(float DeltaTime, bool bRewinding)
 	TimeSinceSnapshotsChanged += DeltaTime;
 
 	if (bIsKartPawn) {
-		KartPawn->SetIsDead(TransformAndVelocitySnapshots[LatestSnapshotIndex].bHasDied);
+		//KartPawn->SetIsDead(TransformAndVelocitySnapshots[LatestSnapshotIndex].bHasDied);
+	}
+	if (GetOwner() && GetOwner()->Implements<UKillable>())
+	{
+		IKillable::Execute_SetIsDead(GetOwner(), TransformAndVelocitySnapshots[LatestSnapshotIndex].bHasDied);
 	}
 
 	bool bReachedEndOfTrack = false;
@@ -470,7 +478,11 @@ bool URewindComponent::TryStopTimeManipulation(bool& bStateToSet, bool bResetTim
 	// Turn off requested time manipulation (i.e. bIsRewinding, bIsFastForwarding, bIsTimeScrubbing)
 	bStateToSet = false;
 	if (bIsKartPawn) {
-		KartPawn->SetIsDead(TransformAndVelocitySnapshots[LatestSnapshotIndex].bHasDied);
+		//KartPawn->SetIsDead(TransformAndVelocitySnapshots[LatestSnapshotIndex].bHasDied);
+	}
+	if (GetOwner() && GetOwner()->Implements<UKillable>())
+	{
+		IKillable::Execute_SetIsDead(GetOwner(), TransformAndVelocitySnapshots[LatestSnapshotIndex].bHasDied);
 	}
 	// If transitioning from rewind to regular play, restore state
 	if (!bIsTimeScrubbing)
@@ -629,7 +641,11 @@ void URewindComponent::ApplySnapshot(const FTransformAndVelocitySnapshot& Snapsh
 		OwnerRootComponent->SetPhysicsAngularVelocityInRadians(Snapshot.AngularVelocityInRadians);
 		if (bIsKartPawn)
 		{
-			KartPawn->SetIsDead(Snapshot.bHasDied);
+			//KartPawn->SetIsDead(Snapshot.bHasDied);
+		}
+		if (GetOwner() && GetOwner()->Implements<UKillable>())
+		{
+			IKillable::Execute_SetIsDead(GetOwner(), Snapshot.bHasDied);
 		}
 	}
 }
@@ -643,7 +659,11 @@ void URewindComponent::ApplySnapshotMode(const FMovementVelocityAndModeSnapshot&
 		OwnerMovementComponent->SetMovementMode(Snapshot.MovementMode);
 		if (bIsKartPawn)
 		{
-			KartPawn->SetIsDead(Snapshot.bHasDied);
+			//KartPawn->SetIsDead(Snapshot.bHasDied);
+		}
+		if (GetOwner() && GetOwner()->Implements<UKillable>())
+		{
+			IKillable::Execute_SetIsDead(GetOwner(), Snapshot.bHasDied);
 		}
 	}
 }

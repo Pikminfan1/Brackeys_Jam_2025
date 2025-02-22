@@ -5,12 +5,13 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
 #include "Rewind/RewindComponent.h"
+#include "Killable.h"
 #include "KartPawnBase.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnIsDeadChanged, bool, bNewIsDead);
 
 UCLASS()
-class BRACKEYS_JAM_2025_API AKartPawnBase : public APawn
+class BRACKEYS_JAM_2025_API AKartPawnBase : public APawn, public IKillable
 {
 	GENERATED_BODY()
 
@@ -29,13 +30,17 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool bIsDead = false;
 
-	UFUNCTION(BlueprintCallable)
-	bool IsDead() const { return bIsDead; }
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Killable")
+	bool IsDead() const;
+	virtual bool IsDead_Implementation() const override { return bIsDead; }
 
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Killable")
 	void SetIsDead(bool bNewIsDead);
-
+	virtual void SetIsDead_Implementation(bool bNewIsDead) override;
+	
 	virtual void Tick(float DeltaTime) override;
+
+
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
