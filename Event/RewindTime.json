@@ -1,0 +1,48 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "3267980351",
+    "Type": "Event",
+    "GUID": "{2733A86F-B812-4D13-8208-716E3E32D83F}",
+    "Language": "SFX",
+    "Hash": "{895E6428-F276-6F28-FD91-E0D4E280D9CC}",
+    "ObjectPath": "RewindTime",
+    "ShortName": "RewindTime",
+    "Path": "Event/RewindTime.bnk",
+    "Media": [
+     {
+      "Id": "11150287",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "RewindTime.wav",
+      "Path": "Media/11150287.wem",
+      "CachePath": "29/{299BC009-5C72-D27D-41BF-0E9942E7E2B9}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "3267980351",
+      "Name": "RewindTime",
+      "ObjectPath": "\\Events\\Default Work Unit\\RewindTime",
+      "GUID": "{2733A86F-B812-4D13-8208-716E3E32D83F}",
+      "DurationType": "OneShot",
+      "DurationMin": "2.5",
+      "DurationMax": "2.5",
+      "MediaRefs": [
+       {
+        "Id": "11150287"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{C52EB3CF-DE9E-9881-BE1A-2C02295F8C1C}"
+ }
+}

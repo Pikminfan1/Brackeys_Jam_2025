@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{E5B03569-EB92-4084-8D20-227305AB673A}" SchemaVersion="123">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{E5B03569-EB92-4084-8D20-227305AB673A}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="Accelerate" ID="{F997D0C7-EB4D-497F-9E7F-7418AB778C76}">
+					<ChildrenList>
+						<Action Name="" ID="{937C0DE5-2CFA-4E06-AF50-D63178B9B15F}" ShortID="277377494">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Accelerate" ID="{8BA3C838-A0DA-437C-9F83-C124E1CE59DF}" WorkUnitID="{BF1E979A-B596-4A23-927F-AC2FEAF961CC}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Boost" ID="{5CC91B41-8254-4143-8547-005A29081674}">
+					<ChildrenList>
+						<Action Name="" ID="{BC3D2F9E-2FE2-4890-94CB-86643AD34C41}" ShortID="187378306">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Boost" ID="{50BFA20A-197B-49F7-BB37-6C6A53E67585}" WorkUnitID="{BF1E979A-B596-4A23-927F-AC2FEAF961CC}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Death" ID="{7ADFB06F-4327-413E-B84F-9775438B2701}">
+					<ChildrenList>
+						<Action Name="" ID="{F753D273-E249-4D53-8588-DD4A946B65D6}" ShortID="308577127">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Death" ID="{A615C54B-1420-4AD5-AE1E-2D35AFAFDEBA}" WorkUnitID="{BF1E979A-B596-4A23-927F-AC2FEAF961CC}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Drift" ID="{F767A05B-B110-488E-8F34-70D5A672A28E}">
+					<ChildrenList>
+						<Action Name="" ID="{FFCF0E6B-92D1-4CFC-8E9F-EEEC5FA0376A}" ShortID="1053204553">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Drift" ID="{79F6C745-BD75-48CA-81BF-24CEFE6A5B25}" WorkUnitID="{BF1E979A-B596-4A23-927F-AC2FEAF961CC}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="ThreeTwoOneGO" ID="{2DA3879C-8B26-4720-8EF1-6B8D97A3ADC9}">
+					<ChildrenList>
+						<Action Name="" ID="{CBF7E6EE-43E4-4CAD-882B-00EBBE0BEDBA}" ShortID="590939257">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="321Go" ID="{0C4E88CF-5DC3-448E-B956-A644BF93127C}" WorkUnitID="{BF1E979A-B596-4A23-927F-AC2FEAF961CC}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="RewindTime" ID="{2733A86F-B812-4D13-8208-716E3E32D83F}">
+					<ChildrenList>
+						<Action Name="" ID="{689E1DD5-6BDB-4BA3-A2F0-BDCB0D4D60C8}" ShortID="153167029">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="RewindTime" ID="{A35DA8AF-1BDF-415F-A4A0-33B675796E70}" WorkUnitID="{BF1E979A-B596-4A23-927F-AC2FEAF961CC}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Bomb" ID="{1B3DEFBA-5410-4F35-825A-3A81AF7746E9}">
+					<ChildrenList>
+						<Action Name="" ID="{F898E4A1-C670-4693-BFDA-9A6767841260}" ShortID="849907953">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Bomb" ID="{4D28EF1B-2887-470B-B583-5321C8D0419C}" WorkUnitID="{BF1E979A-B596-4A23-927F-AC2FEAF961CC}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Flames" ID="{66D94607-E36E-4BC2-9435-7AE7084F5954}">
+					<ChildrenList>
+						<Action Name="" ID="{9C5EBD3F-D7EB-4568-8860-20791EF6EAE8}" ShortID="575423291">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Flame" ID="{04673014-BF5E-4739-BB23-371CBE1C3A3E}" WorkUnitID="{BF1E979A-B596-4A23-927F-AC2FEAF961CC}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="LaserGate" ID="{6B0DD0C6-AB58-48D9-B2A4-752B92023225}">
+					<ChildrenList>
+						<Action Name="" ID="{3AB1151A-88C8-4438-9A09-31E88A028A8C}" ShortID="314604157">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="LaserGate" ID="{FCFD10C9-7E8D-4106-ABF0-37D288AD0C77}" WorkUnitID="{BF1E979A-B596-4A23-927F-AC2FEAF961CC}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Spikes" ID="{2262716D-F272-42D1-A40B-E4467A72ECAE}">
+					<ChildrenList>
+						<Action Name="" ID="{E85132B3-842C-48A8-8CEC-C51CF77873BF}" ShortID="1019069061">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Spikes" ID="{560E84B2-7E1A-480E-98F8-477933941A82}" WorkUnitID="{BF1E979A-B596-4A23-927F-AC2FEAF961CC}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="TeslaCoil" ID="{9D32A4C3-2C0B-4D90-9F77-7B383204891C}">
+					<ChildrenList>
+						<Action Name="" ID="{2AA76181-DD6C-45B1-9BD4-4DB42E2B625F}" ShortID="728457297">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="TeslaCoil" ID="{CCCD0BEA-2043-4CA0-89E1-617FC93E777A}" WorkUnitID="{BF1E979A-B596-4A23-927F-AC2FEAF961CC}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="MainTheme" ID="{D9A416B5-C068-4805-ACFB-CD9443084E13}">
+					<ChildrenList>
+						<Action Name="" ID="{147402D4-E497-4E07-A1F7-D02930BCA781}" ShortID="11637170">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MainTheme" ID="{159D0E3F-9CD6-4F28-8183-ECC854AE97F4}" WorkUnitID="{EBAE014A-EE78-4532-9D27-ACB3AF409AA8}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

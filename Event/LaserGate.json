@@ -1,0 +1,48 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "2073785287",
+    "Type": "Event",
+    "GUID": "{6B0DD0C6-AB58-48D9-B2A4-752B92023225}",
+    "Language": "SFX",
+    "Hash": "{A5183AE4-2514-93CE-6C82-91F013E238B7}",
+    "ObjectPath": "LaserGate",
+    "ShortName": "LaserGate",
+    "Path": "Event/LaserGate.bnk",
+    "Media": [
+     {
+      "Id": "409313207",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "LaserGate.wav",
+      "Path": "Media/409313207.wem",
+      "CachePath": "82/{829CCF3A-F944-656C-39C5-937E1B8C3B6D}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "2073785287",
+      "Name": "LaserGate",
+      "ObjectPath": "\\Events\\Default Work Unit\\LaserGate",
+      "GUID": "{6B0DD0C6-AB58-48D9-B2A4-752B92023225}",
+      "DurationType": "OneShot",
+      "DurationMin": "1",
+      "DurationMax": "1",
+      "MediaRefs": [
+       {
+        "Id": "409313207"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{DD83DA03-A221-9776-3CA4-5B87E1353EF7}"
+ }
+}

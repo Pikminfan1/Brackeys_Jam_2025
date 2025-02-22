@@ -1,0 +1,48 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "2389703494",
+    "Type": "Event",
+    "GUID": "{5CC91B41-8254-4143-8547-005A29081674}",
+    "Language": "SFX",
+    "Hash": "{1B089FB4-01AE-60BF-03AC-875C4A4752BD}",
+    "ObjectPath": "Boost",
+    "ShortName": "Boost",
+    "Path": "Event/Boost.bnk",
+    "Media": [
+     {
+      "Id": "810823655",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Boost.wav",
+      "Path": "Media/810823655.wem",
+      "CachePath": "B2/{B2ABF105-5032-9A0F-8AEF-A6C50C375E83}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "2389703494",
+      "Name": "Boost",
+      "ObjectPath": "\\Events\\Default Work Unit\\Boost",
+      "GUID": "{5CC91B41-8254-4143-8547-005A29081674}",
+      "DurationType": "OneShot",
+      "DurationMin": "3",
+      "DurationMax": "3",
+      "MediaRefs": [
+       {
+        "Id": "810823655"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{D7B06876-2011-367C-8093-F35AEC192AF2}"
+ }
+}

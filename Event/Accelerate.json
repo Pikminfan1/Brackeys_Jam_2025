@@ -1,0 +1,48 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "3089599978",
+    "Type": "Event",
+    "GUID": "{F997D0C7-EB4D-497F-9E7F-7418AB778C76}",
+    "Language": "SFX",
+    "Hash": "{27A92247-4D77-6486-7E4D-FED66143785D}",
+    "ObjectPath": "Accelerate",
+    "ShortName": "Accelerate",
+    "Path": "Event/Accelerate.bnk",
+    "Media": [
+     {
+      "Id": "268923198",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Accelerate.wav",
+      "Path": "Media/268923198.wem",
+      "CachePath": "D0/{D08E5A15-160B-9259-F78A-E57812EF0F90}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "3089599978",
+      "Name": "Accelerate",
+      "ObjectPath": "\\Events\\Default Work Unit\\Accelerate",
+      "GUID": "{F997D0C7-EB4D-497F-9E7F-7418AB778C76}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.5",
+      "DurationMax": "1.5",
+      "MediaRefs": [
+       {
+        "Id": "268923198"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{9041FD5F-0370-A242-DF1A-4B991045F52A}"
+ }
+}

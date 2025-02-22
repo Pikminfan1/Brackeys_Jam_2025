@@ -1,0 +1,48 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "506266859",
+    "Type": "Event",
+    "GUID": "{2DA3879C-8B26-4720-8EF1-6B8D97A3ADC9}",
+    "Language": "SFX",
+    "Hash": "{FA02D8AA-EB89-F7C0-D9D5-C225A0A6B797}",
+    "ObjectPath": "ThreeTwoOneGO",
+    "ShortName": "ThreeTwoOneGO",
+    "Path": "Event/ThreeTwoOneGO.bnk",
+    "Media": [
+     {
+      "Id": "418288951",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "321Go.wav",
+      "Path": "Media/418288951.wem",
+      "CachePath": "E8/{E81854CF-DC39-52F5-7652-4EE7E52506AD}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "506266859",
+      "Name": "ThreeTwoOneGO",
+      "ObjectPath": "\\Events\\Default Work Unit\\ThreeTwoOneGO",
+      "GUID": "{2DA3879C-8B26-4720-8EF1-6B8D97A3ADC9}",
+      "DurationType": "OneShot",
+      "DurationMin": "6",
+      "DurationMax": "6",
+      "MediaRefs": [
+       {
+        "Id": "418288951"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{C64A2A7A-61E9-5F29-EF60-FA735AA8857F}"
+ }
+}

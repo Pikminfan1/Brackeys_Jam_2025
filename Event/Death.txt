@@ -1,0 +1,3 @@
+Event	ID	Name			Wwise Object Path	Notes
+	779278001	Death			\Default Work Unit\Death	
+

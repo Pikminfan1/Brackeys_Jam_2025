@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{9AB49F5E-005F-45CD-AFFB-718ACC8C5D51}" SchemaVersion="123">
+	<SoundBanks>
+		<WorkUnit Name="Default Work Unit" ID="{9AB49F5E-005F-45CD-AFFB-718ACC8C5D51}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="New_SoundBank" ID="{52D289D5-E8EA-46A4-8FD6-E32CA256634D}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Death" ID="{7ADFB06F-4327-413E-B84F-9775438B2701}" WorkUnitID="{E5B03569-EB92-4084-8D20-227305AB673A}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Boost" ID="{5CC91B41-8254-4143-8547-005A29081674}" WorkUnitID="{E5B03569-EB92-4084-8D20-227305AB673A}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Spikes" ID="{2262716D-F272-42D1-A40B-E4467A72ECAE}" WorkUnitID="{E5B03569-EB92-4084-8D20-227305AB673A}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="ThreeTwoOneGO" ID="{2DA3879C-8B26-4720-8EF1-6B8D97A3ADC9}" WorkUnitID="{E5B03569-EB92-4084-8D20-227305AB673A}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Drift" ID="{F767A05B-B110-488E-8F34-70D5A672A28E}" WorkUnitID="{E5B03569-EB92-4084-8D20-227305AB673A}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="LaserGate" ID="{6B0DD0C6-AB58-48D9-B2A4-752B92023225}" WorkUnitID="{E5B03569-EB92-4084-8D20-227305AB673A}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Accelerate" ID="{F997D0C7-EB4D-497F-9E7F-7418AB778C76}" WorkUnitID="{E5B03569-EB92-4084-8D20-227305AB673A}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Flames" ID="{66D94607-E36E-4BC2-9435-7AE7084F5954}" WorkUnitID="{E5B03569-EB92-4084-8D20-227305AB673A}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="RewindTime" ID="{2733A86F-B812-4D13-8208-716E3E32D83F}" WorkUnitID="{E5B03569-EB92-4084-8D20-227305AB673A}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="TeslaCoil" ID="{9D32A4C3-2C0B-4D90-9F77-7B383204891C}" WorkUnitID="{E5B03569-EB92-4084-8D20-227305AB673A}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Bomb" ID="{1B3DEFBA-5410-4F35-825A-3A81AF7746E9}" WorkUnitID="{E5B03569-EB92-4084-8D20-227305AB673A}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="Main" ID="{AD0211EC-5177-4696-B19B-81EFCC5E3CE5}">
+					<ObjectInclusionList/>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundBanks>
+</WwiseDocument>
