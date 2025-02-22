@@ -1,0 +1,48 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "2067748134",
+    "Type": "Event",
+    "GUID": "{F767A05B-B110-488E-8F34-70D5A672A28E}",
+    "Language": "SFX",
+    "Hash": "{A4D2245F-E747-FB99-DE71-FC485556069B}",
+    "ObjectPath": "Drift",
+    "ShortName": "Drift",
+    "Path": "Event/Drift.bnk",
+    "Media": [
+     {
+      "Id": "587290621",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Drift.wav",
+      "Path": "Media/587290621.wem",
+      "CachePath": "55/{55EE0993-8CEE-2D8E-23F7-5440BF4E5E63}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "2067748134",
+      "Name": "Drift",
+      "ObjectPath": "\\Events\\Default Work Unit\\Drift",
+      "GUID": "{F767A05B-B110-488E-8F34-70D5A672A28E}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.5",
+      "DurationMax": "1.5",
+      "MediaRefs": [
+       {
+        "Id": "587290621"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{29D5C337-88B8-FC25-BEB2-85039797388C}"
+ }
+}

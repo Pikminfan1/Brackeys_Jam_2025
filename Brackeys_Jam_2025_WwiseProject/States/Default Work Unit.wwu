@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{200517ED-175F-4A92-BB50-D7E2A0DA4192}" SchemaVersion="123">
+	<States>
+		<WorkUnit Name="Default Work Unit" ID="{200517ED-175F-4A92-BB50-D7E2A0DA4192}" PersistMode="Standalone">
+			<ChildrenList>
+				<StateGroup Name="Time" ID="{A9737FAD-8861-409A-9C4B-7D9FAADD37C6}">
+					<ChildrenList>
+						<State Name="None" ID="{E8239816-192E-4C0C-AF1D-66C277910EF2}"/>
+						<State Name="Normal" ID="{DE910215-6D53-4B25-9861-1EFE5B58D7E0}"/>
+						<State Name="RewindTime" ID="{F64BA147-2948-48AE-8EB7-D0A6075726DD}"/>
+					</ChildrenList>
+					<TransitionList>
+						<Transition>
+							<StartState Name="Normal" ID="{DE910215-6D53-4B25-9861-1EFE5B58D7E0}"/>
+							<EndState Name="RewindTime" ID="{F64BA147-2948-48AE-8EB7-D0A6075726DD}"/>
+							<Time>0</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+						<Transition>
+							<StartState Name="RewindTime" ID="{F64BA147-2948-48AE-8EB7-D0A6075726DD}"/>
+							<EndState Name="Normal" ID="{DE910215-6D53-4B25-9861-1EFE5B58D7E0}"/>
+							<Time>0</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+					</TransitionList>
+				</StateGroup>
+			</ChildrenList>
+		</WorkUnit>
+	</States>
+</WwiseDocument>

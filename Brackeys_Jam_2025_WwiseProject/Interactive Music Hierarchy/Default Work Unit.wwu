@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{EBAE014A-EE78-4532-9D27-ACB3AF409AA8}" SchemaVersion="123">
+	<InteractiveMusic>
+		<WorkUnit Name="Default Work Unit" ID="{EBAE014A-EE78-4532-9D27-ACB3AF409AA8}" PersistMode="Standalone">
+			<ChildrenList>
+				<MusicPlaylistContainer Name="MainTheme" ID="{159D0E3F-9CD6-4F28-8183-ECC854AE97F4}" ShortID="153743838">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{32CDA104-C895-4D4A-8E5F-57F0DCAB41D7}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D98E642A-2986-47B6-961B-EF2E1F9779F5}"/>
+						</Reference>
+						<Reference Name="PlaylistRoot">
+							<Custom>
+								<MusicPlaylistItem Name="" ID="{5F0A9C1B-AD04-4EC2-A39F-AF7B38AD8C28}" ShortID="123558767">
+									<PropertyList>
+										<Property Name="LoopCount" Type="int16" Value="0"/>
+									</PropertyList>
+									<ChildrenList>
+										<MusicPlaylistItem Name="" ID="{EE1B23AA-1A39-4198-9CFF-23E3D9528E8C}" ShortID="694944124">
+											<PropertyList>
+												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Segment">
+													<ObjectRef Name="Fzerorip" ID="{039AF5AC-12B7-44FF-96FB-C9D58D26359E}" WorkUnitID="{EBAE014A-EE78-4532-9D27-ACB3AF409AA8}"/>
+												</Reference>
+											</ReferenceList>
+										</MusicPlaylistItem>
+									</ChildrenList>
+								</MusicPlaylistItem>
+							</Custom>
+						</Reference>
+						<Reference Name="TransitionRoot">
+							<Custom>
+								<MusicTransition Name="Root" ID="{16B00FE8-BA53-4E9F-8350-354B411E9B70}">
+									<PropertyList>
+										<Property Name="IsFolder" Type="bool" Value="True"/>
+									</PropertyList>
+									<ChildrenList>
+										<MusicTransition Name="Transition" ID="{1BAEF8A7-2E15-4C49-BD05-CA682B1B34FD}">
+											<TransitionInfo/>
+										</MusicTransition>
+									</ChildrenList>
+									<TransitionInfo/>
+								</MusicTransition>
+							</Custom>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<MusicSegment Name="Fzerorip" ID="{039AF5AC-12B7-44FF-96FB-C9D58D26359E}" ShortID="916509649">
+							<PropertyList>
+								<Property Name="EndPosition" Type="Real64" Value="156800"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{32CDA104-C895-4D4A-8E5F-57F0DCAB41D7}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D98E642A-2986-47B6-961B-EF2E1F9779F5}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<MusicTrack Name="Fzerorip" ID="{CA853B64-1063-4435-B944-B626766D6B73}" ShortID="66936337">
+									<ReferenceList>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D98E642A-2986-47B6-961B-EF2E1F9779F5}"/>
+										</Reference>
+										<Reference Name="TransitionRoot">
+											<Custom>
+												<MusicTransition Name="Root" ID="{D5FA8537-8F69-41FF-8B9E-8C5C5D67E276}">
+													<PropertyList>
+														<Property Name="IsFolder" Type="bool" Value="True"/>
+													</PropertyList>
+													<TransitionInfo/>
+												</MusicTransition>
+											</Custom>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Fzerorip" ID="{E430C843-B5B1-422B-890E-72C00B4E3120}">
+											<Language>SFX</Language>
+											<AudioFile>Fzerorip.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="28131690"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Sequences">
+											<Reference>
+												<Local>
+													<MusicTrackSequence Name="" ID="{E1FBB765-2B42-4DFC-8F4F-69E258011065}">
+														<ObjectLists>
+															<ObjectList Name="Clips">
+																<Reference>
+																	<Local>
+																		<MusicClip Name="Fzerorip" ID="{55EBB2FB-3EE5-45E1-A9F3-BDBB586F3BC2}">
+																			<PropertyList>
+																				<Property Name="EndTrimOffset" Type="Real64" Value="156800"/>
+																				<Property Name="FadeInMode" Type="int16" Value="0"/>
+																				<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																			</PropertyList>
+																			<AudioSourceRef Name="Fzerorip" ID="{E430C843-B5B1-422B-890E-72C00B4E3120}"/>
+																		</MusicClip>
+																	</Local>
+																</Reference>
+															</ObjectList>
+														</ObjectLists>
+													</MusicTrackSequence>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</MusicTrack>
+							</ChildrenList>
+							<ObjectLists>
+								<ObjectList Name="Cues">
+									<Reference>
+										<Local>
+											<MusicCue Name="Entry Cue" ID="{7CE867C1-A997-42BB-911A-B5FF8CCBC6FD}"/>
+										</Local>
+									</Reference>
+									<Reference>
+										<Local>
+											<MusicCue Name="Exit Cue" ID="{0E390029-D1CC-4CA3-9365-75FB3EC25A6C}">
+												<PropertyList>
+													<Property Name="CueType" Type="int16" Value="1"/>
+													<Property Name="TimeMs" Type="Real64" Value="156800"/>
+												</PropertyList>
+											</MusicCue>
+										</Local>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
+						</MusicSegment>
+					</ChildrenList>
+					<StateInfo>
+						<StateGroupList>
+							<StateGroupInfo>
+								<StateGroupRef Name="Time" ID="{A9737FAD-8861-409A-9C4B-7D9FAADD37C6}"/>
+							</StateGroupInfo>
+						</StateGroupList>
+						<CustomStateList>
+							<CustomState>
+								<StateRef Name="RewindTime" ID="{F64BA147-2948-48AE-8EB7-D0A6075726DD}"/>
+								<CustomState Name="" ID="{A8DA257E-D28F-4C8D-996A-66582ECFBA74}" ShortID="628166177">
+									<PropertyList>
+										<Property Name="Lowpass" Type="int16" Value="63"/>
+									</PropertyList>
+								</CustomState>
+							</CustomState>
+							<CustomState>
+								<StateRef Name="Normal" ID="{DE910215-6D53-4B25-9861-1EFE5B58D7E0}"/>
+								<CustomState Name="" ID="{32E96EEC-D3D9-49BD-8CC6-2C5D07991B99}" ShortID="760776660"/>
+							</CustomState>
+						</CustomStateList>
+					</StateInfo>
+				</MusicPlaylistContainer>
+			</ChildrenList>
+		</WorkUnit>
+	</InteractiveMusic>
+</WwiseDocument>

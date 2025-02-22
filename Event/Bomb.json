@@ -1,0 +1,48 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "1727945837",
+    "Type": "Event",
+    "GUID": "{1B3DEFBA-5410-4F35-825A-3A81AF7746E9}",
+    "Language": "SFX",
+    "Hash": "{6DE40D04-F35A-DD58-2627-F3F310CC5BF0}",
+    "ObjectPath": "Bomb",
+    "ShortName": "Bomb",
+    "Path": "Event/Bomb.bnk",
+    "Media": [
+     {
+      "Id": "418621535",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Bomb.wav",
+      "Path": "Media/418621535.wem",
+      "CachePath": "68/{681A679B-30FC-965F-55BE-1DE4A9B61DEA}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "1727945837",
+      "Name": "Bomb",
+      "ObjectPath": "\\Events\\Default Work Unit\\Bomb",
+      "GUID": "{1B3DEFBA-5410-4F35-825A-3A81AF7746E9}",
+      "DurationType": "OneShot",
+      "DurationMin": "2",
+      "DurationMax": "2",
+      "MediaRefs": [
+       {
+        "Id": "418621535"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{5D9D4EDB-20A3-B33A-F330-13EBB5840600}"
+ }
+}

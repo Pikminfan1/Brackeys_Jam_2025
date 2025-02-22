@@ -1,0 +1,48 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "747415224",
+    "Type": "Event",
+    "GUID": "{2262716D-F272-42D1-A40B-E4467A72ECAE}",
+    "Language": "SFX",
+    "Hash": "{355CD986-8B8C-0E64-2EFE-59D26158F4A2}",
+    "ObjectPath": "Spikes",
+    "ShortName": "Spikes",
+    "Path": "Event/Spikes.bnk",
+    "Media": [
+     {
+      "Id": "912581672",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Spikes.wav",
+      "Path": "Media/912581672.wem",
+      "CachePath": "82/{82AD2078-C3A0-17AF-933B-B5D122B3CBF0}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "747415224",
+      "Name": "Spikes",
+      "ObjectPath": "\\Events\\Default Work Unit\\Spikes",
+      "GUID": "{2262716D-F272-42D1-A40B-E4467A72ECAE}",
+      "DurationType": "OneShot",
+      "DurationMin": "2",
+      "DurationMax": "2",
+      "MediaRefs": [
+       {
+        "Id": "912581672"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{4EC091C1-ACAE-06B0-3474-0D8418A5FCC5}"
+ }
+}

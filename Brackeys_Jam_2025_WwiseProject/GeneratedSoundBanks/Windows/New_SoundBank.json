@@ -1,0 +1,267 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "4072029455",
+    "Type": "User",
+    "GUID": "{52D289D5-E8EA-46A4-8FD6-E32CA256634D}",
+    "Language": "SFX",
+    "Hash": "{412891CB-C1C0-5541-6B92-DC6C7EF5CEBF}",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\New_SoundBank",
+    "ShortName": "New_SoundBank",
+    "Path": "New_SoundBank.bnk",
+    "Media": [
+     {
+      "Id": "11150287",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "RewindTime.wav",
+      "CachePath": "29/{299BC009-5C72-D27D-41BF-0E9942E7E2B9}.wem"
+     },
+     {
+      "Id": "268923198",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Accelerate.wav",
+      "CachePath": "D0/{D08E5A15-160B-9259-F78A-E57812EF0F90}.wem"
+     },
+     {
+      "Id": "409313207",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "LaserGate.wav",
+      "CachePath": "82/{829CCF3A-F944-656C-39C5-937E1B8C3B6D}.wem"
+     },
+     {
+      "Id": "418288951",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "321Go.wav",
+      "CachePath": "E8/{E81854CF-DC39-52F5-7652-4EE7E52506AD}.wem"
+     },
+     {
+      "Id": "418621535",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Bomb.wav",
+      "CachePath": "68/{681A679B-30FC-965F-55BE-1DE4A9B61DEA}.wem"
+     },
+     {
+      "Id": "496899442",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Death.wav",
+      "CachePath": "30/{30E3B1C4-C865-BE2B-B7A0-0DF3101D9841}.wem"
+     },
+     {
+      "Id": "587290621",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Drift.wav",
+      "CachePath": "55/{55EE0993-8CEE-2D8E-23F7-5440BF4E5E63}.wem"
+     },
+     {
+      "Id": "697948092",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Flames.wav",
+      "CachePath": "DC/{DC99D217-B508-95CB-5B00-BE2FD4C70B14}.wem"
+     },
+     {
+      "Id": "810823655",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Boost.wav",
+      "CachePath": "B2/{B2ABF105-5032-9A0F-8AEF-A6C50C375E83}.wem"
+     },
+     {
+      "Id": "912581672",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Spikes.wav",
+      "CachePath": "82/{82AD2078-C3A0-17AF-933B-B5D122B3CBF0}.wem"
+     },
+     {
+      "Id": "1033705311",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "TeslaCoil.wav",
+      "CachePath": "A0/{A0985468-6F6A-97E6-9102-DF6040D1473E}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "3089599978",
+      "Name": "Accelerate",
+      "ObjectPath": "\\Events\\Default Work Unit\\Accelerate",
+      "GUID": "{F997D0C7-EB4D-497F-9E7F-7418AB778C76}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.5",
+      "DurationMax": "1.5",
+      "MediaRefs": [
+       {
+        "Id": "268923198"
+       }
+      ]
+     },
+     {
+      "Id": "1727945837",
+      "Name": "Bomb",
+      "ObjectPath": "\\Events\\Default Work Unit\\Bomb",
+      "GUID": "{1B3DEFBA-5410-4F35-825A-3A81AF7746E9}",
+      "DurationType": "OneShot",
+      "DurationMin": "2",
+      "DurationMax": "2",
+      "MediaRefs": [
+       {
+        "Id": "418621535"
+       }
+      ]
+     },
+     {
+      "Id": "2389703494",
+      "Name": "Boost",
+      "ObjectPath": "\\Events\\Default Work Unit\\Boost",
+      "GUID": "{5CC91B41-8254-4143-8547-005A29081674}",
+      "DurationType": "OneShot",
+      "DurationMin": "3",
+      "DurationMax": "3",
+      "MediaRefs": [
+       {
+        "Id": "810823655"
+       }
+      ]
+     },
+     {
+      "Id": "779278001",
+      "Name": "Death",
+      "ObjectPath": "\\Events\\Default Work Unit\\Death",
+      "GUID": "{7ADFB06F-4327-413E-B84F-9775438B2701}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.5",
+      "DurationMax": "1.5",
+      "MediaRefs": [
+       {
+        "Id": "496899442"
+       }
+      ]
+     },
+     {
+      "Id": "2067748134",
+      "Name": "Drift",
+      "ObjectPath": "\\Events\\Default Work Unit\\Drift",
+      "GUID": "{F767A05B-B110-488E-8F34-70D5A672A28E}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.5",
+      "DurationMax": "1.5",
+      "MediaRefs": [
+       {
+        "Id": "587290621"
+       }
+      ]
+     },
+     {
+      "Id": "606239841",
+      "Name": "Flames",
+      "ObjectPath": "\\Events\\Default Work Unit\\Flames",
+      "GUID": "{66D94607-E36E-4BC2-9435-7AE7084F5954}",
+      "DurationType": "OneShot",
+      "DurationMin": "2.6250114",
+      "DurationMax": "2.6250114",
+      "MediaRefs": [
+       {
+        "Id": "697948092"
+       }
+      ]
+     },
+     {
+      "Id": "2073785287",
+      "Name": "LaserGate",
+      "ObjectPath": "\\Events\\Default Work Unit\\LaserGate",
+      "GUID": "{6B0DD0C6-AB58-48D9-B2A4-752B92023225}",
+      "DurationType": "OneShot",
+      "DurationMin": "1",
+      "DurationMax": "1",
+      "MediaRefs": [
+       {
+        "Id": "409313207"
+       }
+      ]
+     },
+     {
+      "Id": "3267980351",
+      "Name": "RewindTime",
+      "ObjectPath": "\\Events\\Default Work Unit\\RewindTime",
+      "GUID": "{2733A86F-B812-4D13-8208-716E3E32D83F}",
+      "DurationType": "OneShot",
+      "DurationMin": "2.5",
+      "DurationMax": "2.5",
+      "MediaRefs": [
+       {
+        "Id": "11150287"
+       }
+      ]
+     },
+     {
+      "Id": "747415224",
+      "Name": "Spikes",
+      "ObjectPath": "\\Events\\Default Work Unit\\Spikes",
+      "GUID": "{2262716D-F272-42D1-A40B-E4467A72ECAE}",
+      "DurationType": "OneShot",
+      "DurationMin": "2",
+      "DurationMax": "2",
+      "MediaRefs": [
+       {
+        "Id": "912581672"
+       }
+      ]
+     },
+     {
+      "Id": "1778931543",
+      "Name": "TeslaCoil",
+      "ObjectPath": "\\Events\\Default Work Unit\\TeslaCoil",
+      "GUID": "{9D32A4C3-2C0B-4D90-9F77-7B383204891C}",
+      "DurationType": "OneShot",
+      "DurationMin": "2",
+      "DurationMax": "2",
+      "MediaRefs": [
+       {
+        "Id": "1033705311"
+       }
+      ]
+     },
+     {
+      "Id": "506266859",
+      "Name": "ThreeTwoOneGO",
+      "ObjectPath": "\\Events\\Default Work Unit\\ThreeTwoOneGO",
+      "GUID": "{2DA3879C-8B26-4720-8EF1-6B8D97A3ADC9}",
+      "DurationType": "OneShot",
+      "DurationMin": "6",
+      "DurationMax": "6",
+      "MediaRefs": [
+       {
+        "Id": "418288951"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{9587D393-AC15-21F0-C2F0-6BE11921ABDA}"
+ }
+}

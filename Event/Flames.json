@@ -1,0 +1,48 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "606239841",
+    "Type": "Event",
+    "GUID": "{66D94607-E36E-4BC2-9435-7AE7084F5954}",
+    "Language": "SFX",
+    "Hash": "{F0E92B09-E032-1F09-7FC7-9175C1DB0516}",
+    "ObjectPath": "Flames",
+    "ShortName": "Flames",
+    "Path": "Event/Flames.bnk",
+    "Media": [
+     {
+      "Id": "697948092",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Flames.wav",
+      "Path": "Media/697948092.wem",
+      "CachePath": "DC/{DC99D217-B508-95CB-5B00-BE2FD4C70B14}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "606239841",
+      "Name": "Flames",
+      "ObjectPath": "\\Events\\Default Work Unit\\Flames",
+      "GUID": "{66D94607-E36E-4BC2-9435-7AE7084F5954}",
+      "DurationType": "OneShot",
+      "DurationMin": "2.6250114",
+      "DurationMax": "2.6250114",
+      "MediaRefs": [
+       {
+        "Id": "697948092"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{D2A00BED-2689-4662-7FB5-4AE4F417E5C6}"
+ }
+}

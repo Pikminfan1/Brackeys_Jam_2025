@@ -1,0 +1,3 @@
+Event	ID	Name			Wwise Object Path	Notes
+	1727945837	Bomb			\Default Work Unit\Bomb	
+

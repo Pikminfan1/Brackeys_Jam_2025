@@ -1,0 +1,48 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "1778931543",
+    "Type": "Event",
+    "GUID": "{9D32A4C3-2C0B-4D90-9F77-7B383204891C}",
+    "Language": "SFX",
+    "Hash": "{5E592EC8-FE09-72EA-2634-FFA0105E6A6F}",
+    "ObjectPath": "TeslaCoil",
+    "ShortName": "TeslaCoil",
+    "Path": "Event/TeslaCoil.bnk",
+    "Media": [
+     {
+      "Id": "1033705311",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "TeslaCoil.wav",
+      "Path": "Media/1033705311.wem",
+      "CachePath": "A0/{A0985468-6F6A-97E6-9102-DF6040D1473E}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "1778931543",
+      "Name": "TeslaCoil",
+      "ObjectPath": "\\Events\\Default Work Unit\\TeslaCoil",
+      "GUID": "{9D32A4C3-2C0B-4D90-9F77-7B383204891C}",
+      "DurationType": "OneShot",
+      "DurationMin": "2",
+      "DurationMax": "2",
+      "MediaRefs": [
+       {
+        "Id": "1033705311"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{E55D8A6A-D434-43CB-D6B7-AB4041C81D52}"
+ }
+}
