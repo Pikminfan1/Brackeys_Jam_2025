@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{52D289D5-E8EA-46A4-8FD6-E32CA256634D}",
     "Language": "SFX",
-    "Hash": "{412891CB-C1C0-5541-6B92-DC6C7EF5CEBF}",
+    "Hash": "{A17A7BA8-DFC6-D6A1-D6D9-DECDC319AB74}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\New_SoundBank",
     "ShortName": "New_SoundBank",
     "Path": "New_SoundBank.bnk",
@@ -24,11 +24,28 @@
       "CachePath": "29/{299BC009-5C72-D27D-41BF-0E9942E7E2B9}.wem"
      },
      {
-      "Id": "268923198",
+      "Id": "179898083",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
+      "ShortName": "Lap increment.wav",
+      "CachePath": "0E/{0EA4718A-07F5-04D0-BF89-058D87DDAB2F}.wem"
+     },
+     {
+      "Id": "191773270",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MainMenu.wav",
+      "CachePath": "16/{161BFABD-CE8D-8649-5FF7-DD0C61C30ABE}.wem"
+     },
+     {
+      "Id": "268923198",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Loose",
       "ShortName": "Accelerate.wav",
+      "Path": "Media/268923198.wem",
       "CachePath": "D0/{D08E5A15-160B-9259-F78A-E57812EF0F90}.wem"
      },
      {
@@ -69,7 +86,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "Drift.wav",
-      "CachePath": "55/{55EE0993-8CEE-2D8E-23F7-5440BF4E5E63}.wem"
+      "CachePath": "22/{220528FF-3C20-ECE6-54B8-7D720A8AE299}.wem"
      },
      {
       "Id": "697948092",
@@ -85,7 +102,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "Boost.wav",
-      "CachePath": "B2/{B2ABF105-5032-9A0F-8AEF-A6C50C375E83}.wem"
+      "CachePath": "22/{2234828B-3AA3-AAC2-A9DC-C8ECDCB7EFA8}.wem"
      },
      {
       "Id": "912581672",
@@ -138,9 +155,7 @@
       "Name": "Boost",
       "ObjectPath": "\\Events\\Default Work Unit\\Boost",
       "GUID": "{5CC91B41-8254-4143-8547-005A29081674}",
-      "DurationType": "OneShot",
-      "DurationMin": "3",
-      "DurationMax": "3",
+      "DurationType": "Infinite",
       "MediaRefs": [
        {
         "Id": "810823655"
@@ -166,9 +181,7 @@
       "Name": "Drift",
       "ObjectPath": "\\Events\\Default Work Unit\\Drift",
       "GUID": "{F767A05B-B110-488E-8F34-70D5A672A28E}",
-      "DurationType": "OneShot",
-      "DurationMin": "1.5",
-      "DurationMax": "1.5",
+      "DurationType": "Infinite",
       "MediaRefs": [
        {
         "Id": "587290621"
@@ -190,6 +203,20 @@
       ]
      },
      {
+      "Id": "2153366407",
+      "Name": "LapIncrement",
+      "ObjectPath": "\\Events\\Default Work Unit\\LapIncrement",
+      "GUID": "{EF0F5561-D54F-4DC2-B8B6-594AAD15ABDC}",
+      "DurationType": "OneShot",
+      "DurationMin": "2",
+      "DurationMax": "2",
+      "MediaRefs": [
+       {
+        "Id": "179898083"
+       }
+      ]
+     },
+     {
       "Id": "2073785287",
       "Name": "LaserGate",
       "ObjectPath": "\\Events\\Default Work Unit\\LaserGate",
@@ -200,6 +227,18 @@
       "MediaRefs": [
        {
         "Id": "409313207"
+       }
+      ]
+     },
+     {
+      "Id": "3604647259",
+      "Name": "MainMenu",
+      "ObjectPath": "\\Events\\Default Work Unit\\MainMenu",
+      "GUID": "{5E79CB61-F1CD-4184-9C38-DC3003DA15BC}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "191773270"
        }
       ]
      },
@@ -262,6 +301,6 @@
     ]
    }
   ],
-  "FileHash": "{9587D393-AC15-21F0-C2F0-6BE11921ABDA}"
+  "FileHash": "{95822BC3-8C29-6F4C-BBA2-15077C194056}"
  }
 }
