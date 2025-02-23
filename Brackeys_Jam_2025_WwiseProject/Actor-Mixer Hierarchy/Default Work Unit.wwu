@@ -18,9 +18,19 @@
 										<Value>48</Value>
 									</ValueList>
 								</Property>
+								<Property Name="MaxSoundPerInstance" Type="int16">
+									<ValueList>
+										<Value>1</Value>
+									</ValueList>
+								</Property>
 								<Property Name="Pitch" Type="int32">
 									<ValueList>
 										<Value>300</Value>
+									</ValueList>
+								</Property>
+								<Property Name="UseMaxSoundPerInstance" Type="bool">
+									<ValueList>
+										<Value>True</Value>
 									</ValueList>
 								</Property>
 								<Property Name="Volume" Type="Real64">
@@ -53,9 +63,19 @@
 						<Sound Name="Boost" ID="{50BFA20A-197B-49F7-BB37-6C6A53E67585}" ShortID="702068289">
 							<PropertyList>
 								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+								<Property Name="MaxSoundPerInstance" Type="int16">
+									<ValueList>
+										<Value>1</Value>
+									</ValueList>
+								</Property>
 								<Property Name="Pitch" Type="int32">
 									<ValueList>
 										<Value>200</Value>
+									</ValueList>
+								</Property>
+								<Property Name="UseMaxSoundPerInstance" Type="bool">
+									<ValueList>
+										<Value>True</Value>
 									</ValueList>
 								</Property>
 								<Property Name="Volume" Type="Real64">
@@ -88,9 +108,19 @@
 						<Sound Name="Drift" ID="{79F6C745-BD75-48CA-81BF-24CEFE6A5B25}" ShortID="823300785">
 							<PropertyList>
 								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+								<Property Name="MaxSoundPerInstance" Type="int16">
+									<ValueList>
+										<Value>1</Value>
+									</ValueList>
+								</Property>
 								<Property Name="Pitch" Type="int32">
 									<ValueList>
 										<Value>20</Value>
+									</ValueList>
+								</Property>
+								<Property Name="UseMaxSoundPerInstance" Type="bool">
+									<ValueList>
+										<Value>True</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -117,6 +147,16 @@
 						</Sound>
 						<Sound Name="Death" ID="{A615C54B-1420-4AD5-AE1E-2D35AFAFDEBA}" ShortID="397148627">
 							<PropertyList>
+								<Property Name="MaxSoundPerInstance" Type="int16">
+									<ValueList>
+										<Value>1</Value>
+									</ValueList>
+								</Property>
+								<Property Name="UseMaxSoundPerInstance" Type="bool">
+									<ValueList>
+										<Value>True</Value>
+									</ValueList>
+								</Property>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
 										<Value>-4</Value>
@@ -167,6 +207,18 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="DriftEND" ID="{2BDD310F-85A9-42C3-8B15-288D61636C9B}" ShortID="986838239">
+							<PropertyList>
+								<Property Name="MaxSoundPerInstance" Type="int16">
+									<ValueList>
+										<Value>1</Value>
+									</ValueList>
+								</Property>
+								<Property Name="UseMaxSoundPerInstance" Type="bool">
+									<ValueList>
+										<Value>True</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{32CDA104-C895-4D4A-8E5F-57F0DCAB41D7}"/>
@@ -304,6 +356,13 @@
 				<Folder Name="Hazards" ID="{D60EE9EC-9BCC-4450-BD7D-86E62C15B7AD}" ShortID="492833493">
 					<ChildrenList>
 						<Sound Name="Bomb" ID="{4D28EF1B-2887-470B-B583-5321C8D0419C}" ShortID="230358509">
+							<PropertyList>
+								<Property Name="UseMaxSoundPerInstance" Type="bool">
+									<ValueList>
+										<Value>True</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{32CDA104-C895-4D4A-8E5F-57F0DCAB41D7}"/>
