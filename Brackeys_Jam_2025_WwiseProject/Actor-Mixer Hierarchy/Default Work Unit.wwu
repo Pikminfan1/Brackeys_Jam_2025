@@ -7,9 +7,25 @@
 					<ChildrenList>
 						<Sound Name="Accelerate" ID="{8BA3C838-A0DA-437C-9F83-C124E1CE59DF}" ShortID="712014154">
 							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 								<Property Name="IsStreamingEnabled" Type="bool">
 									<ValueList>
 										<Value>True</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Lowpass" Type="int16">
+									<ValueList>
+										<Value>48</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>300</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-1</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -37,6 +53,16 @@
 						<Sound Name="Boost" ID="{50BFA20A-197B-49F7-BB37-6C6A53E67585}" ShortID="702068289">
 							<PropertyList>
 								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>200</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-5</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
@@ -62,6 +88,11 @@
 						<Sound Name="Drift" ID="{79F6C745-BD75-48CA-81BF-24CEFE6A5B25}" ShortID="823300785">
 							<PropertyList>
 								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>20</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
@@ -85,6 +116,13 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="Death" ID="{A615C54B-1420-4AD5-AE1E-2D35AFAFDEBA}" ShortID="397148627">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-4</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{32CDA104-C895-4D4A-8E5F-57F0DCAB41D7}"/>
@@ -104,6 +142,50 @@
 							</ChildrenList>
 							<ActiveSourceList>
 								<ActiveSource Name="Death" ID="{8217419F-6D7C-46FD-80AD-5C6AD07F6ABC}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="AccelerateEND" ID="{1D53FCE4-030A-4526-BB22-C112AD4124F1}" ShortID="688235421">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{32CDA104-C895-4D4A-8E5F-57F0DCAB41D7}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D98E642A-2986-47B6-961B-EF2E1F9779F5}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="AccelerateDown" ID="{5FD34034-DAAB-43D2-A888-69CB6129AAEA}">
+									<Language>SFX</Language>
+									<AudioFile>AccelerateDown.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="412544582"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="AccelerateDown" ID="{5FD34034-DAAB-43D2-A888-69CB6129AAEA}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="DriftEND" ID="{2BDD310F-85A9-42C3-8B15-288D61636C9B}" ShortID="986838239">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{32CDA104-C895-4D4A-8E5F-57F0DCAB41D7}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D98E642A-2986-47B6-961B-EF2E1F9779F5}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DriftEnd" ID="{65AD8CB8-6B0E-4F19-AC64-4FCA23FADEF4}">
+									<Language>SFX</Language>
+									<AudioFile>DriftEnd.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="238529607"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DriftEnd" ID="{65AD8CB8-6B0E-4F19-AC64-4FCA23FADEF4}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
@@ -133,6 +215,18 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="RewindTime" ID="{A35DA8AF-1BDF-415F-A4A0-33B675796E70}" ShortID="665491457">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>630</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>4</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{32CDA104-C895-4D4A-8E5F-57F0DCAB41D7}"/>
@@ -155,6 +249,13 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="LapIncrement" ID="{0439C42D-7BC4-417B-B82D-54FFB6D8A59A}" ShortID="147693485">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>670</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{32CDA104-C895-4D4A-8E5F-57F0DCAB41D7}"/>
@@ -174,6 +275,28 @@
 							</ChildrenList>
 							<ActiveSourceList>
 								<ActiveSource Name="Lap increment" ID="{BBCFC737-B969-4771-B6A1-BFFA9632A5EE}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Win" ID="{B3483D55-6336-4782-A837-4E6B09DCA434}" ShortID="1035341327">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{32CDA104-C895-4D4A-8E5F-57F0DCAB41D7}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D98E642A-2986-47B6-961B-EF2E1F9779F5}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Win" ID="{D6FB781C-A58A-480C-9F41-438B9D61A820}">
+									<Language>SFX</Language>
+									<AudioFile>Win.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="398792915"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Win" ID="{D6FB781C-A58A-480C-9F41-438B9D61A820}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
@@ -247,6 +370,18 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="Spikes" ID="{560E84B2-7E1A-480E-98F8-477933941A82}" ShortID="96556654">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>-350</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>1</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{32CDA104-C895-4D4A-8E5F-57F0DCAB41D7}"/>
@@ -269,6 +404,18 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="TeslaCoil" ID="{CCCD0BEA-2043-4CA0-89E1-617FC93E777A}" ShortID="418206463">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>180</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>4</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{32CDA104-C895-4D4A-8E5F-57F0DCAB41D7}"/>
@@ -279,6 +426,10 @@
 							</ReferenceList>
 							<ChildrenList>
 								<AudioFileSource Name="TeslaCoil" ID="{9B83BFD9-E2C5-4B28-A73C-B0D8BBDC7BF2}">
+									<PropertyList>
+										<Property Name="LoopBegin" Type="Real64" Value="0.852512155591572"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+									</PropertyList>
 									<Language>SFX</Language>
 									<AudioFile>TeslaCoil.wav</AudioFile>
 									<MediaIDList>

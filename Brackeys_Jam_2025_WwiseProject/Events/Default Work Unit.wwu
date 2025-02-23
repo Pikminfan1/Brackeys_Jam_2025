@@ -157,6 +157,39 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="AccelerateEND" ID="{98935150-7D65-46BD-834D-208C83CBF09B}">
+					<ChildrenList>
+						<Action Name="" ID="{BB5296C0-1613-4034-A8A4-61B225F93044}" ShortID="438976463">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AccelerateEND" ID="{1D53FCE4-030A-4526-BB22-C112AD4124F1}" WorkUnitID="{BF1E979A-B596-4A23-927F-AC2FEAF961CC}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="DriftEND" ID="{A92F1522-D7C6-4992-A3FB-3B8D42586D9E}">
+					<ChildrenList>
+						<Action Name="" ID="{3853043E-A890-40D5-98A3-9CBF1672B0BF}" ShortID="547451842">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="DriftEND" ID="{2BDD310F-85A9-42C3-8B15-288D61636C9B}" WorkUnitID="{BF1E979A-B596-4A23-927F-AC2FEAF961CC}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Win" ID="{9BBF0143-929F-4A48-B9C2-8712B4032AFB}">
+					<ChildrenList>
+						<Action Name="" ID="{63F839F4-EE86-491A-B7EC-21D65A8866A0}" ShortID="596428420">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Win" ID="{B3483D55-6336-4782-A837-4E6B09DCA434}" WorkUnitID="{BF1E979A-B596-4A23-927F-AC2FEAF961CC}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

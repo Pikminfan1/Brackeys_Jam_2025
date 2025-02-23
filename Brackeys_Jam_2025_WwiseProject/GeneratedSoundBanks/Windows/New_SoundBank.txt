@@ -3,10 +3,13 @@ Event	ID	Name			Wwise Object Path	Notes
 	606239841	Flames			\Default Work Unit\Flames	
 	747415224	Spikes			\Default Work Unit\Spikes	
 	779278001	Death			\Default Work Unit\Death	
+	979765101	Win			\Default Work Unit\Win	
+	1135998073	AccelerateEND			\Default Work Unit\AccelerateEND	
 	1727945837	Bomb			\Default Work Unit\Bomb	
 	1778931543	TeslaCoil			\Default Work Unit\TeslaCoil	
 	2067748134	Drift			\Default Work Unit\Drift	
 	2073785287	LaserGate			\Default Work Unit\LaserGate	
+	2079931333	DriftEND			\Default Work Unit\DriftEND	
 	2153366407	LapIncrement			\Default Work Unit\LapIncrement	
 	2389703494	Boost			\Default Work Unit\Boost	
 	3089599978	Accelerate			\Default Work Unit\Accelerate	
@@ -14,19 +17,22 @@ Event	ID	Name			Wwise Object Path	Notes
 	3604647259	MainMenu			\Default Work Unit\MainMenu	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	11150287	RewindTime	Y:\Documents\GitHub\Brackeys_Jam_2025\Brackeys_Jam_2025_WwiseProject\.cache\29\{299BC009-5C72-D27D-41BF-0E9942E7E2B9}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment\RewindTime		441096
-	179898083	LapIncrement	Y:\Documents\GitHub\Brackeys_Jam_2025\Brackeys_Jam_2025_WwiseProject\.cache\0E\{0EA4718A-07F5-04D0-BF89-058D87DDAB2F}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment\LapIncrement		352896
-	191773270	MainMenu	Y:\Documents\GitHub\Brackeys_Jam_2025\Brackeys_Jam_2025_WwiseProject\.cache\16\{161BFABD-CE8D-8649-5FF7-DD0C61C30ABE}.wem		\Interactive Music Hierarchy\Default Work Unit\MainMenu\MainMenu\MainMenu		1129056
-	409313207	LaserGate	Y:\Documents\GitHub\Brackeys_Jam_2025\Brackeys_Jam_2025_WwiseProject\.cache\82\{829CCF3A-F944-656C-39C5-937E1B8C3B6D}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Hazards\LaserGate		176496
-	418288951	321Go	Y:\Documents\GitHub\Brackeys_Jam_2025\Brackeys_Jam_2025_WwiseProject\.cache\E8\{E81854CF-DC39-52F5-7652-4EE7E52506AD}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment\321Go		1058496
-	418621535	Bomb	Y:\Documents\GitHub\Brackeys_Jam_2025\Brackeys_Jam_2025_WwiseProject\.cache\68\{681A679B-30FC-965F-55BE-1DE4A9B61DEA}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Hazards\Bomb		352896
-	496899442	Death	Y:\Documents\GitHub\Brackeys_Jam_2025\Brackeys_Jam_2025_WwiseProject\.cache\30\{30E3B1C4-C865-BE2B-B7A0-0DF3101D9841}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Car SFX\Death		264696
-	587290621	Drift	Y:\Documents\GitHub\Brackeys_Jam_2025\Brackeys_Jam_2025_WwiseProject\.cache\22\{220528FF-3C20-ECE6-54B8-7D720A8AE299}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Car SFX\Drift		264696
-	697948092	Flame	Y:\Documents\GitHub\Brackeys_Jam_2025\Brackeys_Jam_2025_WwiseProject\.cache\DC\{DC99D217-B508-95CB-5B00-BE2FD4C70B14}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Hazards\Flame		463148
-	810823655	Boost	Y:\Documents\GitHub\Brackeys_Jam_2025\Brackeys_Jam_2025_WwiseProject\.cache\22\{2234828B-3AA3-AAC2-A9DC-C8ECDCB7EFA8}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Car SFX\Boost		529296
-	912581672	Spikes	Y:\Documents\GitHub\Brackeys_Jam_2025\Brackeys_Jam_2025_WwiseProject\.cache\82\{82AD2078-C3A0-17AF-933B-B5D122B3CBF0}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Hazards\Spikes		352896
-	1033705311	TeslaCoil	Y:\Documents\GitHub\Brackeys_Jam_2025\Brackeys_Jam_2025_WwiseProject\.cache\A0\{A0985468-6F6A-97E6-9102-DF6040D1473E}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Hazards\TeslaCoil		352896
+	11150287	RewindTime	Y:\Desktop\Brackeys_Jam_2025\Brackeys_Jam_2025_WwiseProject\.cache\29\{299BC009-5C72-D27D-41BF-0E9942E7E2B9}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment\RewindTime		441096
+	179898083	LapIncrement	Y:\Desktop\Brackeys_Jam_2025\Brackeys_Jam_2025_WwiseProject\.cache\0E\{0EA4718A-07F5-04D0-BF89-058D87DDAB2F}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment\LapIncrement		352896
+	191773270	MainMenu	Y:\Desktop\Brackeys_Jam_2025\Brackeys_Jam_2025_WwiseProject\.cache\16\{161BFABD-CE8D-8649-5FF7-DD0C61C30ABE}.wem		\Interactive Music Hierarchy\Default Work Unit\MainMenu\MainMenu\MainMenu		1129056
+	238529607	DriftEND	Y:\Desktop\Brackeys_Jam_2025\Brackeys_Jam_2025_WwiseProject\.cache\4D\{4DDE36C3-493B-16C3-A18D-8F4A031893C1}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Car SFX\DriftEND		264696
+	398792915	Win	Y:\Desktop\Brackeys_Jam_2025\Brackeys_Jam_2025_WwiseProject\.cache\48\{481F14B7-CC37-4395-7B59-7B67A232FF69}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment\Win		409424
+	409313207	LaserGate	Y:\Desktop\Brackeys_Jam_2025\Brackeys_Jam_2025_WwiseProject\.cache\82\{829CCF3A-F944-656C-39C5-937E1B8C3B6D}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Hazards\LaserGate		176496
+	412544582	AccelerateEND	Y:\Desktop\Brackeys_Jam_2025\Brackeys_Jam_2025_WwiseProject\.cache\54\{540D0458-3AEE-EBC2-5435-4DD458D9263E}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Car SFX\AccelerateEND		264696
+	418288951	321Go	Y:\Desktop\Brackeys_Jam_2025\Brackeys_Jam_2025_WwiseProject\.cache\8C\{8C45A792-DDC8-0388-9BBB-0C414358000C}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment\321Go		853748
+	418621535	Bomb	Y:\Desktop\Brackeys_Jam_2025\Brackeys_Jam_2025_WwiseProject\.cache\68\{681A679B-30FC-965F-55BE-1DE4A9B61DEA}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Hazards\Bomb		352896
+	496899442	Death	Y:\Desktop\Brackeys_Jam_2025\Brackeys_Jam_2025_WwiseProject\.cache\30\{30E3B1C4-C865-BE2B-B7A0-0DF3101D9841}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Car SFX\Death		264696
+	587290621	Drift	Y:\Desktop\Brackeys_Jam_2025\Brackeys_Jam_2025_WwiseProject\.cache\22\{220528FF-3C20-ECE6-54B8-7D720A8AE299}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Car SFX\Drift		264696
+	697948092	Flame	Y:\Desktop\Brackeys_Jam_2025\Brackeys_Jam_2025_WwiseProject\.cache\DC\{DC99D217-B508-95CB-5B00-BE2FD4C70B14}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Hazards\Flame		463148
+	810823655	Boost	Y:\Desktop\Brackeys_Jam_2025\Brackeys_Jam_2025_WwiseProject\.cache\22\{2234828B-3AA3-AAC2-A9DC-C8ECDCB7EFA8}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Car SFX\Boost		529296
+	912581672	Spikes	Y:\Desktop\Brackeys_Jam_2025\Brackeys_Jam_2025_WwiseProject\.cache\82\{82AD2078-C3A0-17AF-933B-B5D122B3CBF0}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Hazards\Spikes		352896
+	1033705311	TeslaCoil	Y:\Desktop\Brackeys_Jam_2025\Brackeys_Jam_2025_WwiseProject\.cache\A0\{A0985468-6F6A-97E6-9102-DF6040D1473E}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Hazards\TeslaCoil		352896
 
 Streamed Audio	ID	Name	Audio source file	Generated audio file	Wwise Object Path	Notes
-	268923198	Accelerate	Y:\Documents\GitHub\Brackeys_Jam_2025\Brackeys_Jam_2025_WwiseProject\.cache\D0\{D08E5A15-160B-9259-F78A-E57812EF0F90}.wem	268923198.wem	\Actor-Mixer Hierarchy\Default Work Unit\Car SFX\Accelerate	
+	268923198	Accelerate	Y:\Desktop\Brackeys_Jam_2025\Brackeys_Jam_2025_WwiseProject\.cache\80\{803D0F27-094D-E122-FE8F-DAE5D1211E7F}.wem	268923198.wem	\Actor-Mixer Hierarchy\Default Work Unit\Car SFX\Accelerate	
 

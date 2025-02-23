@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{52D289D5-E8EA-46A4-8FD6-E32CA256634D}",
     "Language": "SFX",
-    "Hash": "{A17A7BA8-DFC6-D6A1-D6D9-DECDC319AB74}",
+    "Hash": "{3A534671-E7C5-A511-3846-F5E654653404}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\New_SoundBank",
     "ShortName": "New_SoundBank",
     "Path": "New_SoundBank.bnk",
@@ -40,13 +40,29 @@
       "CachePath": "16/{161BFABD-CE8D-8649-5FF7-DD0C61C30ABE}.wem"
      },
      {
+      "Id": "238529607",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "DriftEnd.wav",
+      "CachePath": "4D/{4DDE36C3-493B-16C3-A18D-8F4A031893C1}.wem"
+     },
+     {
       "Id": "268923198",
       "Language": "SFX",
       "Streaming": "true",
       "Location": "Loose",
       "ShortName": "Accelerate.wav",
       "Path": "Media/268923198.wem",
-      "CachePath": "D0/{D08E5A15-160B-9259-F78A-E57812EF0F90}.wem"
+      "CachePath": "80/{803D0F27-094D-E122-FE8F-DAE5D1211E7F}.wem"
+     },
+     {
+      "Id": "398792915",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Win.wav",
+      "CachePath": "48/{481F14B7-CC37-4395-7B59-7B67A232FF69}.wem"
      },
      {
       "Id": "409313207",
@@ -57,12 +73,20 @@
       "CachePath": "82/{829CCF3A-F944-656C-39C5-937E1B8C3B6D}.wem"
      },
      {
+      "Id": "412544582",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AccelerateDown.wav",
+      "CachePath": "54/{540D0458-3AEE-EBC2-5435-4DD458D9263E}.wem"
+     },
+     {
       "Id": "418288951",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "321Go.wav",
-      "CachePath": "E8/{E81854CF-DC39-52F5-7652-4EE7E52506AD}.wem"
+      "CachePath": "8C/{8C45A792-DDC8-0388-9BBB-0C414358000C}.wem"
      },
      {
       "Id": "418621535",
@@ -127,12 +151,24 @@
       "Name": "Accelerate",
       "ObjectPath": "\\Events\\Default Work Unit\\Accelerate",
       "GUID": "{F997D0C7-EB4D-497F-9E7F-7418AB778C76}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "268923198"
+       }
+      ]
+     },
+     {
+      "Id": "1135998073",
+      "Name": "AccelerateEND",
+      "ObjectPath": "\\Events\\Default Work Unit\\AccelerateEND",
+      "GUID": "{98935150-7D65-46BD-834D-208C83CBF09B}",
       "DurationType": "OneShot",
       "DurationMin": "1.5",
       "DurationMax": "1.5",
       "MediaRefs": [
        {
-        "Id": "268923198"
+        "Id": "412544582"
        }
       ]
      },
@@ -189,6 +225,20 @@
       ]
      },
      {
+      "Id": "2079931333",
+      "Name": "DriftEND",
+      "ObjectPath": "\\Events\\Default Work Unit\\DriftEND",
+      "GUID": "{A92F1522-D7C6-4992-A3FB-3B8D42586D9E}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.5",
+      "DurationMax": "1.5",
+      "MediaRefs": [
+       {
+        "Id": "238529607"
+       }
+      ]
+     },
+     {
       "Id": "606239841",
       "Name": "Flames",
       "ObjectPath": "\\Events\\Default Work Unit\\Flames",
@@ -208,8 +258,8 @@
       "ObjectPath": "\\Events\\Default Work Unit\\LapIncrement",
       "GUID": "{EF0F5561-D54F-4DC2-B8B6-594AAD15ABDC}",
       "DurationType": "OneShot",
-      "DurationMin": "2",
-      "DurationMax": "2",
+      "DurationMin": "1.3581724",
+      "DurationMax": "1.3581724",
       "MediaRefs": [
        {
         "Id": "179898083"
@@ -248,8 +298,8 @@
       "ObjectPath": "\\Events\\Default Work Unit\\RewindTime",
       "GUID": "{2733A86F-B812-4D13-8208-716E3E32D83F}",
       "DurationType": "OneShot",
-      "DurationMin": "2.5",
-      "DurationMax": "2.5",
+      "DurationMin": "1.7373978",
+      "DurationMax": "1.7373978",
       "MediaRefs": [
        {
         "Id": "11150287"
@@ -262,8 +312,8 @@
       "ObjectPath": "\\Events\\Default Work Unit\\Spikes",
       "GUID": "{2262716D-F272-42D1-A40B-E4467A72ECAE}",
       "DurationType": "OneShot",
-      "DurationMin": "2",
-      "DurationMax": "2",
+      "DurationMin": "2.4481072",
+      "DurationMax": "2.4481072",
       "MediaRefs": [
        {
         "Id": "912581672"
@@ -276,8 +326,8 @@
       "ObjectPath": "\\Events\\Default Work Unit\\TeslaCoil",
       "GUID": "{9D32A4C3-2C0B-4D90-9F77-7B383204891C}",
       "DurationType": "OneShot",
-      "DurationMin": "2",
-      "DurationMax": "2",
+      "DurationMin": "1.802501",
+      "DurationMax": "1.802501",
       "MediaRefs": [
        {
         "Id": "1033705311"
@@ -290,17 +340,31 @@
       "ObjectPath": "\\Events\\Default Work Unit\\ThreeTwoOneGO",
       "GUID": "{2DA3879C-8B26-4720-8EF1-6B8D97A3ADC9}",
       "DurationType": "OneShot",
-      "DurationMin": "6",
-      "DurationMax": "6",
+      "DurationMin": "4.839297",
+      "DurationMax": "4.839297",
       "MediaRefs": [
        {
         "Id": "418288951"
+       }
+      ]
+     },
+     {
+      "Id": "979765101",
+      "Name": "Win",
+      "ObjectPath": "\\Events\\Default Work Unit\\Win",
+      "GUID": "{9BBF0143-929F-4A48-B9C2-8712B4032AFB}",
+      "DurationType": "OneShot",
+      "DurationMin": "2.3204534",
+      "DurationMax": "2.3204534",
+      "MediaRefs": [
+       {
+        "Id": "398792915"
        }
       ]
      }
     ]
    }
   ],
-  "FileHash": "{95822BC3-8C29-6F4C-BBA2-15077C194056}"
+  "FileHash": "{2FADCCBE-8CB8-0165-12EA-D566A2FEC02E}"
  }
 }
