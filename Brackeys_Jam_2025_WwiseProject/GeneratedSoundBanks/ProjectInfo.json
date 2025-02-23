@@ -12,14 +12,14 @@
     "GUID": "{72CAAAAF-85F8-4D51-A5AF-BCB04A4BD3C6}",
     "BasePlatform": "Mac",
     "BasePlatformGUID": "{9C6217D5-DD11-4795-87C1-6CE02853C540}",
-    "Path": "../../../../GeneragtedSB"
+    "Path": "../../.."
    },
    {
     "Name": "Windows",
     "GUID": "{92D05B18-7743-4990-B87F-EE726E164056}",
     "BasePlatform": "Windows",
     "BasePlatformGUID": "{6E0CB257-C6C8-4C5C-8366-2740DFC441EB}",
-    "Path": "../../../../GeneragtedSB/Windows"
+    "Path": "Windows"
    }
   ],
   "Languages": [
@@ -31,6 +31,6 @@
     "UseAsStandIn": "true"
    }
   ],
-  "FileHash": "{1D4CF7DA-32C0-6D12-4AC0-320453B74175}"
+  "FileHash": "{B6D917CB-297D-2D6C-3ED5-65DDFA405508}"
  }
 }
