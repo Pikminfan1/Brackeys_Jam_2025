@@ -62,7 +62,6 @@
 						</Sound>
 						<Sound Name="Boost" ID="{50BFA20A-197B-49F7-BB37-6C6A53E67585}" ShortID="702068289">
 							<PropertyList>
-								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
 										<Value>1</Value>
@@ -76,11 +75,6 @@
 								<Property Name="UseMaxSoundPerInstance" Type="bool">
 									<ValueList>
 										<Value>True</Value>
-									</ValueList>
-								</Property>
-								<Property Name="Volume" Type="Real64">
-									<ValueList>
-										<Value>-5</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -395,6 +389,11 @@
 								<Property Name="UseMaxSoundPerInstance" Type="bool">
 									<ValueList>
 										<Value>True</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-10</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
